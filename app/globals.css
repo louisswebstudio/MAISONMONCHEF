@@ -1,0 +1,314 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   Maison Monchef — design tokens (Tailwind v4 CSS-first theme)
+   Source of truth: DESIGN.md + CLAUDE.md §4. Do not hardcode these values in
+   components — always reference the token (bg-navy, text-charcoal, etc.).
+   ========================================================================== */
+@theme {
+  /* --- Color (confirmed via client eyedropper-check, CLAUDE.md §4) -------- */
+  --color-navy: #121c2d; /* PRIMARY button fill / nav / headlines — NOT charcoal */
+  --color-charcoal: #2a2d34; /* body text, card details — never a button fill */
+  --color-ivory: #ffffff; /* background — CLIENT-CONFIRMED pure white (2026-07). Was #f5f1e8, an unconfirmed guess that made the whole site read warm/tan/beige. */
+  --color-stone-grey: #8a8d91; /* secondary text, dividers, card borders */
+  --color-light-stone: #d5cfc4; /* section backgrounds, subtle blocks */
+  --color-warm-taupe: #8a795b; /* accent, hover states — never large fills */
+  --color-silver-greige: #a39a8e; /* accent, borders */
+  --color-paper: #faf7f0; /* warm card fill (premium pass — replaces Figma #f7f7f7) */
+  --color-linen: #eae5da; /* warm panel gutter (premium pass — replaces Figma #e5e5e5) */
+
+  /* --- Typography -------------------------------------------------------- */
+  /* Body/UI: Montserrat. Display: Cormorant Garamond — an interim licensed
+     serif standing in for The Seasons (unlicensed, CLAUDE.md §7.1). When The
+     Seasons is licensed, swap ONLY --font-display to its var — that single
+     line finalises the real 2-typeface system. */
+  --font-body: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, "Times New Roman", serif;
+
+  /* --- Radius — sharp by default (CLAUDE.md §4 "0px on everything") ------- */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-hairline: 2px; /* ONLY exception: form fields / inputs */
+  /* Shared card corner (UI/UX pass). Kept sharp to hold the brand's editorial
+     sharp-corner identity (CLAUDE.md §4) rather than the softer ~12px template
+     look — swap this ONE value to round every card at once if that changes. */
+  --radius-card: 0px;
+
+  /* --- Layout primitives ------------------------------------------------- */
+  --container-content: 1240px; /* -> max-w-content, centered content grid */
+  --spacing-page: 100px; /* desktop page margin (24px on mobile, see Container) */
+  --spacing-grid-gap: 24px; /* standard card-grid gap */
+
+  /* --- Section rhythm (UI/UX pass) ---------------------------------------
+     One fixed vertical scale applied top AND bottom of every major section so
+     scroll rhythm is even. Use py-section by default; py-section-sm for compact
+     strips (the developer marquee); py-section-lg for deliberate big moments. */
+  --spacing-section-sm: 56px;
+  --spacing-section: 96px;
+  --spacing-section-lg: 128px;
+
+  /* --- Motion -------------------------------------------------------------
+     Figma's ticker (node 138:1718) is a static mockup with no timing spec —
+     40s is a judgment call for a legible, unhurried scroll, not an extracted
+     value. -> animate-marquee utility. */
+  --animate-marquee: marquee 40s linear infinite;
+  /* Slow cinematic settle for the hero photo (premium pass). */
+  --animate-kenburns: kenburns 26s cubic-bezier(0.23, 1, 0.32, 1) both;
+  /* Staggered hero entrance — pair with an inline animation-delay. */
+  --animate-rise: rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  /* Properties carousel: the outgoing slide dissolves out over the incoming
+     one (which is already fully painted underneath), so a next/prev change
+     reads as a quiet page-turn crossfade instead of a hard cut. */
+  --animate-card-dissolve: card-dissolve 240ms ease-out both;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-dissolve {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============================================================================
+   Base
+   ========================================================================== */
+@layer base {
+  html {
+    background-color: var(--color-ivory);
+    color: var(--color-charcoal);
+    -webkit-text-size-adjust: 100%;
+    /* Offset hash/anchor jumps and focus-scrolls by the sticky nav's height
+       (the bar is a constant 95px — see components/layout/Nav.tsx) so section
+       headings never land hidden underneath the fixed header. */
+    scroll-padding-top: 95px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 17px;
+    }
+  }
+
+  /* Visible, brand-consistent focus ring for keyboard users (WCAG 2.1 AA). */
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
+  }
+
+  /* Brand-toned text selection. */
+  ::selection {
+    background-color: var(--color-warm-taupe);
+    color: #fff;
+  }
+}
+
+/* ============================================================================
+   Scroll reveal (premium pass) — driven by components/ui/Reveal.tsx.
+   `.reveal-hidden` is only ever added from JS (after hydration, to elements
+   still below the fold), so content is never invisible without JS.
+   ========================================================================== */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(26px);
+}
+.reveal-hidden.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   Page loading veil (components/ui/PageLoader.tsx) — a quiet full-screen white
+   ground carrying the arch symbol. The mark fades in, then the whole veil fades
+   out (~560ms total), on first load AND on every route change. Purely CSS so it
+   works before hydration / without JS; keyed remount replays it per navigation.
+   No spinner, no text — "quiet authority", not a startup loader.
+   ========================================================================== */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100; /* above sticky nav (z-40) and the floating WhatsApp CTA */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-ivory);
+  /* Hold briefly while the mark settles, then fade the veil away and drop out
+     of the interaction/paint path entirely (visibility:hidden). */
+  animation: page-loader-out 280ms cubic-bezier(0.4, 0, 0.2, 1) 300ms forwards;
+}
+.page-loader__mark {
+  width: 88px;
+  height: auto;
+  opacity: 0;
+  animation: page-loader-mark-in 340ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (min-width: 768px) {
+  .page-loader__mark {
+    width: 96px;
+  }
+}
+@keyframes page-loader-mark-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes page-loader-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+/* Respect reduced-motion: skip the veil altogether — no fade, no hold. */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader {
+    display: none;
+  }
+}
+
+/* ============================================================================
+   Card system (UI/UX pass) — ONE surface spec shared by every card (listing,
+   blog, testimonial, property-spotlight panel): warm `paper` fill, a single
+   1px `linen` border (border XOR shadow, never both at rest), and the shared
+   `--radius-card`. `.card-interactive` adds the one hover lift + soft shadow so
+   every clickable card responds identically.
+   ========================================================================== */
+@layer components {
+  .card-surface {
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-linen);
+    border-radius: var(--radius-card);
+  }
+  .card-interactive {
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease;
+  }
+  .card-interactive:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -16px rgba(18, 28, 45, 0.18);
+    border-color: var(--color-silver-greige);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-interactive:hover {
+      transform: none;
+    }
+  }
+}
+
+/* ============================================================================
+   Typography scale (CLAUDE.md §4 / DESIGN.md). Montserrat carries hierarchy
+   through weight + size. Semantic classes so pages don't repeat magic numbers.
+   ========================================================================== */
+@layer components {
+  .text-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+  .text-h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.15;
+  }
+  .text-h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.25;
+  }
+  .text-subhead {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  .text-body {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .text-eyebrow {
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  @media (min-width: 768px) {
+    .text-display {
+      font-size: 64px;
+    }
+    .text-h2 {
+      font-size: 40px;
+    }
+    .text-h3 {
+      font-size: 24px;
+    }
+    .text-subhead {
+      font-size: 20px;
+    }
+    .text-body {
+      font-size: 17px;
+    }
+    .text-eyebrow {
+      font-size: 14px;
+    }
+  }
+}
