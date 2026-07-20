@@ -4,6 +4,7 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { BlogCard } from "@/components/ui/BlogCard";
+import { BLOG_POSTS } from "@/lib/blog-posts";
 
 /**
  * "Blog" — cloned from Figma (file r2XTjIJ5uaZ0VFCG2kfCdn, node 138:3440
@@ -12,13 +13,14 @@ import { BlogCard } from "@/components/ui/BlogCard";
  * (square photo, gold category chip, title, hairline divider, read-time and
  * date row).
  *
- * The three cards in Figma are the SAME placeholder article repeated — no real
- * posts exist yet — so the card content (title, category, date, image) is
- * placeholder data in the dictionaries, and every card links to the journal
- * index rather than a slug. Cards reflow 1→2→3 columns (no mobile frame
- * supplied). Figma's chip gold #8a795b is exactly the warm-taupe token; the
- * divider SVG is a 1px #ededed rule, reproduced as a border. `#f7f7f7` (card
- * frame) has no design token.
+ * Figma's three cards were the same placeholder article repeated with no
+ * slug to link to; now that real posts exist (lib/blog-posts.ts, mirrored in
+ * the Sanity seed), this shows the 3 latest and each card links straight to
+ * its own article at /blog/<slug> — same as the article page's own Related
+ * Blogs row (app/[lang]/blog/[slug]/page.tsx). Cards reflow 1→2→3 columns (no
+ * mobile frame supplied). Figma's chip gold #8a795b is exactly the warm-taupe
+ * token; the divider SVG is a 1px #ededed rule, reproduced as a border.
+ * `#f7f7f7` (card frame) has no design token.
  *
  * NOTE: this section's heading is 48px MEDIUM / -1.44px in Figma — a step
  * outside the 46px semibold / -1.84px used by the other home sections; kept
@@ -28,6 +30,11 @@ import { BlogCard } from "@/components/ui/BlogCard";
 export function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const t = dict.blog;
   const base = `/${lang}`;
+  const categories = dict.blogPage.categories as Record<string, string>;
+
+  const latest = [...BLOG_POSTS]
+    .sort((a, b) => +new Date(b.date) - +new Date(a.date))
+    .slice(0, 3);
 
   return (
     <section className="w-full py-section">
@@ -62,16 +69,16 @@ export function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
         {/* Card grid */}
         <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2 lg:grid-cols-3">
-          {t.items.map((item, i) => (
-            <Reveal key={i} delay={(i % 3) * 110} className="h-full">
+          {latest.map((post, i) => (
+            <Reveal key={post.slug} delay={(i % 3) * 110} className="h-full">
               <BlogCard
                 data={{
-                  href: `${base}/blog`,
-                  image: item.image,
-                  category: item.category,
-                  title: item.title,
-                  minutes: item.minutes,
-                  date: item.date,
+                  href: `${base}/blog/${post.slug}`,
+                  image: post.image,
+                  category: categories[post.category] ?? post.category,
+                  title: post.title,
+                  minutes: post.readMinutes,
+                  date: formatDate(post.date, lang),
                 }}
                 minutesLabel={t.minutes}
               />
@@ -81,4 +88,12 @@ export function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       </Container>
     </section>
   );
+}
+
+function formatDate(iso: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(locale, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(iso));
 }

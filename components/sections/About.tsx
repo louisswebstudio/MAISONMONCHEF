@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
+import { CountUp } from "@/components/ui/CountUp";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 
@@ -90,9 +91,10 @@ export function About({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                   key={stat.label}
                   className="flex flex-col items-center justify-center gap-[8px] overflow-hidden bg-white p-[26px] shadow-[0px_11px_26px_0px_rgba(0,0,0,0.05),0px_-2px_8px_0px_rgba(0,0,0,0.03)]"
                 >
-                  <span className="font-display text-[44px] font-semibold leading-[1.1] text-navy sm:text-[56px]">
-                    {stat.value}
-                  </span>
+                  <CountUp
+                    value={stat.value}
+                    className="font-display text-[44px] font-semibold leading-[1.1] text-navy sm:text-[56px]"
+                  />
                   <span className="text-center text-[16px] font-medium leading-[24px] tracking-[-0.3px] text-navy/70 sm:text-[18px]">
                     {stat.label}
                   </span>

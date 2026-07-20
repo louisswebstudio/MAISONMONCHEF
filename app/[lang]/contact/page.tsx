@@ -80,7 +80,7 @@ export default async function ContactPage({
             491px intro / 549px form, flush with no gap — the form panel's own
             #fcfcfc fill and 20px padding provide the separation. The form is
             deliberately the WIDER column. */}
-        <div className="flex flex-col items-start gap-[54px] lg:flex-row lg:items-center lg:gap-0">
+        <div className="flex flex-col items-start gap-[54px] lg:flex-row lg:items-start lg:gap-0">
           {/* Left — intro + contact items */}
           <div className="flex w-full flex-col gap-[54px] lg:w-[491px] lg:shrink-0 lg:pe-[40px]">
             <div className="flex flex-col gap-[8px]">
