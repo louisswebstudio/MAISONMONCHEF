@@ -146,7 +146,7 @@ export default async function ContactPage({
         {/* ── Full-width (content-width) photo band ──────────────────────── */}
         <div className="relative h-[280px] w-full overflow-hidden sm:h-[360px] lg:h-[405px]">
           <Image
-            src="/brand/contact/contact-skyline.png"
+            src="/brand/reception-centered.webp"
             alt={t.photoAlt}
             fill
             sizes="(min-width: 1240px) 1040px, (min-width: 768px) calc(100vw - 200px), calc(100vw - 48px)"
