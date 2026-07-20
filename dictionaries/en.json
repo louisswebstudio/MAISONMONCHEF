@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "siteName": "Maison Monchef",
+    "defaultTitle": "Maison Monchef — Boutique Real Estate, Dubai",
+    "defaultDescription": "Maison Monchef Real Estate — an institution built to endure. Residential sales, off-plan, secondary market and investment advisory in Dubai."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "The House",
+    "services": "Services",
+    "collection": "Collection",
+    "blog": "Journal",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "cta": {
+    "contact": "Contact Us",
+    "whatsapp": "Chat on WhatsApp",
+    "whatsappMessage": "Hello Maison Monchef, I would like to enquire about your services."
+  },
+  "footer": {
+    "ctaEyebrow": "Get started",
+    "ctaHeading": "Let's make your next move, privately.",
+    "ctaSubtext": "Reach out directly — no forms, no queues, just a conversation.",
+    "ctaExplore": "Explore Properties",
+    "ctaContact": "Contact us",
+    "tagline": "An institution built to endure — boutique real estate advisory in Business Bay, Dubai.",
+    "contact": "Contact Us",
+    "links": "Links",
+    "properties": "Properties",
+    "socials": "Socials",
+    "other": "Other info:",
+    "office": "Dubai, UAE",
+    "rights": "All rights reserved."
+  },
+  "languageSwitcher": {
+    "label": "Select language",
+    "current": "Current language"
+  },
+  "hero": {
+    "tagRanking": "#01",
+    "tagLabel": "Real Estate House, Business Bay",
+    "heading": "An institution built to endure.",
+    "subtext": "Boutique real estate advisory for Dubai's most discerning clients residential sales, off-plan, and portfolio building, guided with quiet precision.",
+    "ctaPrimary": "Explore properties",
+    "ctaSecondary": "About Us"
+  },
+  "partners": {
+    "heading": "Developers We Work With :"
+  },
+  "listings": {
+    "eyebrow": "Exclusive Listings",
+    "heading": "Homes Selected for you",
+    "viewAll": "View all Listings",
+    "beds": "Bedrooms",
+    "baths": "Bathrooms",
+    "area": "Sq Ft",
+    "forSale": "For sale",
+    "cta": "View Listing"
+  },
+  "about": {
+    "eyebrow": "About us",
+    "heading": "Properties placed with quiet authority, guided by rigorous precision and an unmatched attention to detail.",
+    "ctaPrimary": "Let's connect",
+    "ctaSecondary": "Read More",
+    "stats": {
+      "satisfaction": "Client Satisfaction",
+      "markets": "Markets Served",
+      "expertise": "Years of Expertise",
+      "properties": "Properties Placed"
+    }
+  },
+  "ourValue": {
+    "eyebrow": "Why us",
+    "heading": "Business Bay’s considered choice",
+    "photoAlt": "The founder of Maison Monchef at the firm's Business Bay office.",
+    "cards": {
+      "positioning": {
+        "title": "Considered Positioning",
+        "description": "Every property assessed for long-term value, not just immediate appeal."
+      },
+      "centralAddress": {
+        "title": "A Central Address",
+        "description": "Steps from Business Bay Metro Station and the Dubai Water Canal, with direct access to Downtown and DIFC in minutes."
+      },
+      "marketAccess": {
+        "title": "Direct Market Access",
+        "description": "Considered counsel grounded in real market movement, not guesswork."
+      },
+      "discretion": {
+        "title": "Discretion, Always",
+        "description": "Every engagement handled with the same quiet confidentiality, start to finish."
+      }
+    }
+  },
+  "standFor": {
+    "eyebrow": "Our values",
+    "heading": "What We Stand For",
+    "intro": "The principles that guide every client relationship and every transaction.",
+    "values": {
+      "integrity": {
+        "title": "Integrity First",
+        "description": "We believe trust is earned through transparency, honesty, and consistent communication."
+      },
+      "clientCentered": {
+        "title": "Client-Centered Service",
+        "description": "Every decision we make is guided by what's best for our clients and their long-term goals."
+      },
+      "marketExpertise": {
+        "title": "Market Expertise",
+        "description": "We stay informed, proactive, and strategic to help clients navigate changing market conditions."
+      },
+      "results": {
+        "title": "Exceptional Results",
+        "description": "We're committed to delivering outcomes that exceed expectations and create lasting value."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Why Maison Monchef",
+    "heading": "Guided by precision, built to endure.",
+    "intro": "An institution built for clients who choose carefully  guided by precision at every stage of ownership.",
+    "ctaPrimary": "Explore properties",
+    "ctaSecondary": "Contact us",
+    "imageAlt": "Maison Monchef brand emblem in a Dubai reception space",
+    "steps": {
+      "advisory": {
+        "title": "Investment Advisory",
+        "description": "Strategic counsel for building and protecting real estate wealth across global markets."
+      },
+      "portfolio": {
+        "title": "Portfolio Building",
+        "description": "Considered acquisition strategy for clients assembling a portfolio built to last."
+      },
+      "consultation": {
+        "title": "Consultation",
+        "description": "Direct, discreet advice from first enquiry to closing, and every decision after."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Testimonials",
+    "heading": "Trusted by homeowners and investors across the market",
+    "pauseScroll": "Pause testimonial scrolling",
+    "resumeScroll": "Resume testimonial scrolling",
+    "items": [
+      {
+        "initials": "JR",
+        "name": "James R.",
+        "role": "Off-Plan Buyer, Sobha Realty",
+        "quote": "Buying my first investment property was a big decision, but Maison Monchef guided me every step of the way. They were transparent, knowledgeable, and always available."
+      },
+      {
+        "initials": "FA",
+        "name": "Fatima A.",
+        "role": "Investment Advisory, Binghatti",
+        "quote": "I was comparing several projects before deciding. Their advice wasn’t based on making a sale — it was based on what made sense for my goals. That honesty earned my trust."
+      },
+      {
+        "initials": "SL",
+        "name": "Sarah L.",
+        "role": "Investment Advisory, Overseas Investor",
+        "quote": "As an overseas investor, I needed someone I could rely on. Their market knowledge and honest guidance gave me complete confidence throughout the process."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ's",
+    "heading": "Need answers about properties?",
+    "intro": "Direct answers on advisory, portfolio building, and how we work with our clients.",
+    "cta": "Contact Us",
+    "items": [
+      {
+        "question": "Do you work with international clients?",
+        "answer": "Yes. A significant part of our clientele is based overseas. We advise remotely from first enquiry to closing, and can represent you fully in Dubai when you cannot be here in person."
+      },
+      {
+        "question": "Do you handle off-plan properties?",
+        "answer": "We do. We advise on off-plan opportunities from Dubai's leading developers, assessing each project on its fundamentals — developer track record, location, and long-term value — before we recommend it."
+      },
+      {
+        "question": "Can you help build an investment portfolio?",
+        "answer": "Yes. Portfolio building is one of our core services. We design a considered acquisition strategy around your goals and time horizon, then guide each purchase from selection to handover."
+      },
+      {
+        "question": "Is consultation confidential?",
+        "answer": "Always. Discretion is fundamental to how we work — every conversation, mandate, and transaction is handled in strict confidence."
+      },
+      {
+        "question": "Do you support clients in Arabic and French?",
+        "answer": "Yes. Our advisors work comfortably in English, Arabic, and French, so you can be counselled in the language you think in."
+      },
+      {
+        "question": "How do I get started?",
+        "answer": "Simply reach out — by phone, WhatsApp, or the contact form. A short first conversation lets us understand your goals and propose the right next step."
+      }
+    ]
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "heading": "Refined real estate insights",
+    "viewMore": "View More",
+    "minutes": "minutes",
+    "items": [
+      {
+        "category": "Selling Guide",
+        "title": "A Seller's Guide to Handling Home Inspections",
+        "minutes": "5",
+        "date": "May 26, 2026",
+        "image": "/brand/blog/blog-1.png"
+      },
+      {
+        "category": "Selling Guide",
+        "title": "A Seller's Guide to Handling Home Inspections",
+        "minutes": "5",
+        "date": "May 26, 2026",
+        "image": "/brand/blog/blog-1.png"
+      },
+      {
+        "category": "Selling Guide",
+        "title": "A Seller's Guide to Handling Home Inspections",
+        "minutes": "5",
+        "date": "May 26, 2026",
+        "image": "/brand/blog/blog-1.png"
+      }
+    ]
+  },
+  "blogPage": {
+    "metaTitle": "Journal",
+    "eyebrow": "Insights",
+    "title": "The Journal",
+    "subtitle": "Perspective on Dubai real estate — market shifts, ownership, and what quiet expertise actually looks like.",
+    "sortBy": "Sort by",
+    "sortLatest": "Latest first",
+    "sortOldest": "Oldest first",
+    "category": "Category",
+    "readTime": "Read Time",
+    "readSuffix": "min read",
+    "loadMore": "Load More",
+    "empty": "No articles match your filters yet.",
+    "clear": "Clear filters",
+    "categories": {
+      "news": "News",
+      "sellingGuide": "Selling Guide",
+      "investment": "Investment",
+      "buyingTips": "Buying Tips"
+    },
+    "readTimes": {
+      "under5": "Under 5 min",
+      "5to10": "5–10 min",
+      "10to15": "10–15 min",
+      "over15": "15 min+"
+    }
+  },
+  "blogArticle": {
+    "breadcrumbHome": "Home",
+    "breadcrumbJournal": "Journal",
+    "byline": "Maison Monchef Advisory Team",
+    "minutes": "minutes",
+    "ctaText": "Thinking about your next move? Speak directly with our advisory team.",
+    "ctaButton": "Contact Us",
+    "ctaWhatsappMessage": "Hello Maison Monchef, I read \"{article}\" and would like to speak with your advisory team.",
+    "relatedEyebrow": "Insights",
+    "relatedHeading": "Related Blogs",
+    "relatedViewMore": "View More",
+    "notFound": "This article is no longer available."
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Speak directly with Maison Monchef — no forms, no queues, just a conversation. Reach us by phone, WhatsApp, or email for boutique real estate advisory in Business Bay, Dubai.",
+    "eyebrow": "Get in touch",
+    "heading": "Contact Us",
+    "subhead": "Reach out directly — no forms, no queues, just a conversation.",
+    "items": {
+      "officeLabel": "Office",
+      "directLabel": "Direct Line",
+      "enquiriesLabel": "Property Enquiries"
+    },
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your full name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "inquiry": "Inquiry Type",
+      "inquiryOptions": {
+        "buying": "Buying Property",
+        "selling": "Selling Property",
+        "offPlan": "Off-Plan Investment",
+        "advisory": "Investment Advisory",
+        "other": "Other"
+      },
+      "message": "Message (Optional)",
+      "messagePlaceholder": "Tell us a little about what you're looking for.",
+      "submit": "Submit",
+      "consent": "By sending this form, you agree to our Privacy and Data Protection Policy.",
+      "errorName": "Please enter your name.",
+      "errorPhone": "Please enter a phone number.",
+      "errorConsent": "Please accept the Privacy and Data Protection Policy to continue.",
+      "emailSubject": "Property enquiry from {name}"
+    },
+    "photoAlt": "The Business Bay skyline over Dubai Marina, Maison Monchef's home market."
+  },
+  "collection": {
+    "metaTitle": "Explore Properties",
+    "eyebrow": "Properties",
+    "heading": "Explore Properties",
+    "intro": "A curated selection of residences across Dubai. Sales, off-plan, and beyond. Filter by what matters to you.",
+    "loadMore": "Load More",
+    "empty": "No properties match your filters yet. Adjust the filters, or contact us for off-market opportunities.",
+    "dubai": "Dubai",
+    "filters": {
+      "status": "Status",
+      "statusAll": "All",
+      "category": "Category",
+      "priceRange": "Price Range",
+      "location": "Location"
+    },
+    "statuses": {
+      "sales": "Residential Sales",
+      "off-plan": "Off-Plan",
+      "secondary": "Secondary Market"
+    },
+    "categories": {
+      "apartment": "Apartment",
+      "penthouse": "Penthouse",
+      "villa": "Villa",
+      "townhouse": "Townhouse"
+    },
+    "locations": {
+      "business-bay": "Business Bay",
+      "palm-jumeirah": "Palm Jumeirah",
+      "downtown-dubai": "Downtown Dubai",
+      "dubai-marina": "Dubai Marina",
+      "arjan": "Arjan",
+      "dubai-hills": "Dubai Hills"
+    }
+  },
+  "properties": {
+    "eyebrow": "Our properties",
+    "heading": "Curated for those who choose carefully.",
+    "intro": "Homes selected not for volume, but for what they represent precision, discretion, and lasting value.",
+    "forSale": "For sale",
+    "startingPrice": "/Starting Price",
+    "details": "View Listing",
+    "prev": "Previous property",
+    "next": "Next property",
+    "features": {
+      "area": "Area",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms",
+      "floors": "Floors",
+      "parking": "Parking lots",
+      "balconies": "Balconies"
+    }
+  },
+  "propertyDetail": {
+    "breadcrumbHome": "Home",
+    "breadcrumbProperties": "Properties",
+    "photo": "Photo",
+    "notProvided": "—",
+    "sqft": "sq ft",
+    "gallery": {
+      "prev": "Previous image",
+      "next": "Next image",
+      "thumb": "View image"
+    },
+    "info": {
+      "heading": "Property Info",
+      "price": "Price",
+      "completionYear": "Completion Year",
+      "livingSpace": "Living Space",
+      "floors": "Floors",
+      "bedrooms": "Bedrooms",
+      "bathrooms": "Bathrooms"
+    },
+    "amenitiesHeading": "Features & Amenities",
+    "video": {
+      "heading": "Property Video",
+      "placeholder": "A full video walkthrough of this residence is coming soon."
+    },
+    "sidebar": {
+      "heading": "Request a Viewing",
+      "supporting": "No forms, no queues — just a conversation. Arrange a private viewing directly with our team.",
+      "cta": "Book a Viewing"
+    },
+    "whatsappMessage": "Hello Maison Monchef, I would like to book a viewing of {property}.",
+    "relatedHeading": "You May Also Consider",
+    "viewAll": "View all"
+  }
+}

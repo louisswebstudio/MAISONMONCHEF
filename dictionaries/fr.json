@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "siteName": "Maison Monchef",
+    "defaultTitle": "Maison Monchef — Immobilier de prestige, Dubaï",
+    "defaultDescription": "Maison Monchef Real Estate — une institution bâtie pour durer. Ventes résidentielles, sur plan, marché secondaire et conseil en investissement à Dubaï."
+  },
+  "nav": {
+    "home": "Accueil",
+    "about": "La Maison",
+    "services": "Services",
+    "collection": "Collection",
+    "blog": "Journal",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "cta": {
+    "contact": "Nous contacter",
+    "whatsapp": "Discuter sur WhatsApp",
+    "whatsappMessage": "Bonjour Maison Monchef, je souhaite me renseigner sur vos services."
+  },
+  "footer": {
+    "ctaEyebrow": "Commencer",
+    "ctaHeading": "Faisons votre prochain pas, en toute discrétion.",
+    "ctaSubtext": "Contactez-nous directement — sans formulaires, sans file d'attente, juste une conversation.",
+    "ctaExplore": "Explorer les biens",
+    "ctaContact": "Nous contacter",
+    "tagline": "Une institution bâtie pour durer — conseil immobilier de prestige à Business Bay, Dubaï.",
+    "contact": "Nous contacter",
+    "links": "Liens",
+    "properties": "Biens",
+    "socials": "Réseaux",
+    "other": "Autres infos :",
+    "office": "Dubaï, Émirats arabes unis",
+    "rights": "Tous droits réservés."
+  },
+  "languageSwitcher": {
+    "label": "Choisir la langue",
+    "current": "Langue actuelle"
+  },
+  "hero": {
+    "tagRanking": "#01",
+    "tagLabel": "Maison immobilière, Business Bay",
+    "heading": "Une institution bâtie pour durer.",
+    "subtext": "Conseil immobilier de prestige pour les clients les plus exigeants de Dubaï — ventes résidentielles, sur plan et construction de portefeuille, avec une précision tranquille.",
+    "ctaPrimary": "Explorer les biens",
+    "ctaSecondary": "À propos"
+  },
+  "partners": {
+    "heading": "Promoteurs avec lesquels nous travaillons :"
+  },
+  "listings": {
+    "eyebrow": "Sélection exclusive",
+    "heading": "Des résidences choisies pour vous",
+    "viewAll": "Voir toutes les annonces",
+    "beds": "Chambres",
+    "baths": "Salles de bain",
+    "area": "pi²",
+    "forSale": "À vendre",
+    "cta": "Voir le bien"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "heading": "Des biens confiés avec une autorité tranquille, guidés par une précision rigoureuse et un souci du détail inégalé.",
+    "ctaPrimary": "Prenons contact",
+    "ctaSecondary": "En savoir plus",
+    "stats": {
+      "satisfaction": "Satisfaction client",
+      "markets": "Marchés desservis",
+      "expertise": "Années d'expertise",
+      "properties": "Biens confiés"
+    }
+  },
+  "ourValue": {
+    "eyebrow": "Pourquoi nous",
+    "heading": "Le choix réfléchi de Business Bay",
+    "photoAlt": "Le fondateur de Maison Monchef dans les bureaux de la maison à Business Bay.",
+    "cards": {
+      "positioning": {
+        "title": "Un positionnement réfléchi",
+        "description": "Chaque bien est évalué pour sa valeur à long terme, et non pour son seul attrait immédiat."
+      },
+      "centralAddress": {
+        "title": "Une adresse centrale",
+        "description": "À deux pas de la station de métro Business Bay et du Dubai Water Canal, avec un accès direct à Downtown et au DIFC en quelques minutes."
+      },
+      "marketAccess": {
+        "title": "Un accès direct au marché",
+        "description": "Des conseils réfléchis, fondés sur les mouvements réels du marché et non sur des suppositions."
+      },
+      "discretion": {
+        "title": "La discrétion, toujours",
+        "description": "Chaque mandat est traité avec la même confidentialité tranquille, du début à la fin."
+      }
+    }
+  },
+  "standFor": {
+    "eyebrow": "Nos valeurs",
+    "heading": "Ce que nous défendons",
+    "intro": "Les principes qui guident chaque relation client et chaque transaction.",
+    "values": {
+      "integrity": {
+        "title": "L'intégrité d'abord",
+        "description": "Nous croyons que la confiance se gagne par la transparence, l'honnêteté et une communication constante."
+      },
+      "clientCentered": {
+        "title": "Un service centré sur le client",
+        "description": "Chacune de nos décisions est guidée par l'intérêt de nos clients et par leurs objectifs à long terme."
+      },
+      "marketExpertise": {
+        "title": "L'expertise du marché",
+        "description": "Nous restons informés, proactifs et stratégiques pour aider nos clients à naviguer un marché en mouvement."
+      },
+      "results": {
+        "title": "Des résultats d'exception",
+        "description": "Nous nous engageons à dépasser les attentes et à créer une valeur durable."
+      }
+    }
+  },
+  "process": {
+    "eyebrow": "Pourquoi Maison Monchef",
+    "heading": "Guidés par la précision, bâtis pour durer.",
+    "intro": "Une institution pensée pour des clients qui choisissent avec soin, guidés par la précision à chaque étape de la propriété.",
+    "ctaPrimary": "Explorer les biens",
+    "ctaSecondary": "Nous contacter",
+    "imageAlt": "Emblème Maison Monchef dans un espace de réception à Dubaï",
+    "steps": {
+      "advisory": {
+        "title": "Conseil en investissement",
+        "description": "Un accompagnement stratégique pour bâtir et protéger un patrimoine immobilier sur les marchés mondiaux."
+      },
+      "portfolio": {
+        "title": "Constitution de portefeuille",
+        "description": "Une stratégie d'acquisition réfléchie pour les clients qui bâtissent un portefeuille fait pour durer."
+      },
+      "consultation": {
+        "title": "Consultation",
+        "description": "Des conseils directs et discrets, de la première demande à la signature, et pour chaque décision qui suit."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Témoignages",
+    "heading": "La confiance des propriétaires et des investisseurs du marché",
+    "pauseScroll": "Suspendre le défilement des témoignages",
+    "resumeScroll": "Reprendre le défilement des témoignages",
+    "items": [
+      {
+        "initials": "JR",
+        "name": "James R.",
+        "role": "Acheteur sur plan, Sobha Realty",
+        "quote": "Acheter mon premier bien d'investissement était une grande décision, mais Maison Monchef m'a accompagné à chaque étape. Ils ont été transparents, compétents et toujours disponibles."
+      },
+      {
+        "initials": "FA",
+        "name": "Fatima A.",
+        "role": "Conseil en investissement, Binghatti",
+        "quote": "Je comparais plusieurs projets avant de me décider. Leurs conseils ne visaient pas à conclure une vente, mais à servir mes objectifs. Cette honnêteté a gagné ma confiance."
+      },
+      {
+        "initials": "SL",
+        "name": "Sarah L.",
+        "role": "Conseil en investissement, investisseur étranger",
+        "quote": "En tant qu'investisseuse à l'étranger, il me fallait quelqu'un de fiable. Leur connaissance du marché et leurs conseils sincères m'ont donné une confiance totale tout au long du processus."
+      }
+    ]
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "heading": "Des questions sur nos biens ?",
+    "intro": "Des réponses directes sur le conseil, la constitution de portefeuille et notre façon de travailler avec nos clients.",
+    "cta": "Nous contacter",
+    "items": [
+      {
+        "question": "Travaillez-vous avec des clients internationaux ?",
+        "answer": "Oui. Une part importante de notre clientèle réside à l'étranger. Nous conseillons à distance, de la première demande à la signature, et pouvons vous représenter pleinement à Dubaï lorsque vous ne pouvez pas être sur place."
+      },
+      {
+        "question": "Traitez-vous les biens sur plan ?",
+        "answer": "Oui. Nous conseillons sur les opportunités sur plan des principaux promoteurs de Dubaï, en évaluant chaque projet sur ses fondamentaux — historique du promoteur, emplacement et valeur à long terme — avant de le recommander."
+      },
+      {
+        "question": "Pouvez-vous aider à constituer un portefeuille d'investissement ?",
+        "answer": "Oui. La constitution de portefeuille est l'un de nos services clés. Nous concevons une stratégie d'acquisition réfléchie autour de vos objectifs et de votre horizon, puis accompagnons chaque achat de la sélection à la remise des clés."
+      },
+      {
+        "question": "La consultation est-elle confidentielle ?",
+        "answer": "Toujours. La discrétion est au cœur de notre façon de travailler — chaque échange, mandat et transaction est traité en toute confidentialité."
+      },
+      {
+        "question": "Accompagnez-vous les clients en arabe et en français ?",
+        "answer": "Oui. Nos conseillers travaillent aisément en anglais, en arabe et en français, afin que vous soyez conseillé dans la langue dans laquelle vous réfléchissez."
+      },
+      {
+        "question": "Comment commencer ?",
+        "answer": "Contactez-nous simplement — par téléphone, WhatsApp ou le formulaire de contact. Un premier échange rapide nous permet de comprendre vos objectifs et de proposer la prochaine étape adaptée."
+      }
+    ]
+  },
+  "blog": {
+    "eyebrow": "Blog",
+    "heading": "Regards choisis sur l'immobilier",
+    "viewMore": "Voir plus",
+    "minutes": "minutes",
+    "items": [
+      {
+        "category": "Guide du vendeur",
+        "title": "Guide du vendeur : réussir les inspections de votre bien",
+        "minutes": "5",
+        "date": "26 mai 2026",
+        "image": "/brand/blog/blog-1.png"
+      },
+      {
+        "category": "Guide du vendeur",
+        "title": "Guide du vendeur : réussir les inspections de votre bien",
+        "minutes": "5",
+        "date": "26 mai 2026",
+        "image": "/brand/blog/blog-1.png"
+      },
+      {
+        "category": "Guide du vendeur",
+        "title": "Guide du vendeur : réussir les inspections de votre bien",
+        "minutes": "5",
+        "date": "26 mai 2026",
+        "image": "/brand/blog/blog-1.png"
+      }
+    ]
+  },
+  "blogPage": {
+    "metaTitle": "Journal",
+    "eyebrow": "Perspectives",
+    "title": "Le Journal",
+    "subtitle": "Regard sur l'immobilier de Dubaï — évolutions du marché, propriété, et ce qu'une expertise discrète change vraiment.",
+    "sortBy": "Trier par",
+    "sortLatest": "Plus récents",
+    "sortOldest": "Plus anciens",
+    "category": "Catégorie",
+    "readTime": "Temps de lecture",
+    "readSuffix": "min de lecture",
+    "loadMore": "Voir plus",
+    "empty": "Aucun article ne correspond à vos filtres pour l'instant.",
+    "clear": "Effacer les filtres",
+    "categories": {
+      "news": "Actualités",
+      "sellingGuide": "Guide du vendeur",
+      "investment": "Investissement",
+      "buyingTips": "Conseils d'achat"
+    },
+    "readTimes": {
+      "under5": "Moins de 5 min",
+      "5to10": "5–10 min",
+      "10to15": "10–15 min",
+      "over15": "15 min et +"
+    }
+  },
+  "blogArticle": {
+    "breadcrumbHome": "Accueil",
+    "breadcrumbJournal": "Journal",
+    "byline": "Équipe conseil Maison Monchef",
+    "minutes": "minutes",
+    "ctaText": "Vous envisagez votre prochaine étape ? Échangez directement avec notre équipe conseil.",
+    "ctaButton": "Nous contacter",
+    "ctaWhatsappMessage": "Bonjour Maison Monchef, j'ai lu « {article} » et je souhaite parler à votre équipe conseil.",
+    "relatedEyebrow": "Perspectives",
+    "relatedHeading": "Articles liés",
+    "relatedViewMore": "Voir plus",
+    "notFound": "Cet article n'est plus disponible."
+  },
+  "contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Échangez directement avec Maison Monchef — sans formulaires, sans files d'attente, juste une conversation. Joignez-nous par téléphone, WhatsApp ou e-mail pour un conseil immobilier d'exception à Business Bay, Dubaï.",
+    "eyebrow": "Contactez-nous",
+    "heading": "Contactez-nous",
+    "subhead": "Contactez-nous directement — sans formulaires, sans files d'attente, juste une conversation.",
+    "items": {
+      "officeLabel": "Bureau",
+      "directLabel": "Ligne directe",
+      "enquiriesLabel": "Demandes immobilières"
+    },
+    "form": {
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom complet",
+      "phone": "Numéro de téléphone",
+      "phonePlaceholder": "Entrez votre numéro de téléphone",
+      "inquiry": "Type de demande",
+      "inquiryOptions": {
+        "buying": "Acheter un bien",
+        "selling": "Vendre un bien",
+        "offPlan": "Investissement sur plan",
+        "advisory": "Conseil en investissement",
+        "other": "Autre"
+      },
+      "message": "Message (facultatif)",
+      "messagePlaceholder": "Dites-nous ce que vous recherchez.",
+      "submit": "Envoyer",
+      "consent": "En envoyant ce formulaire, vous acceptez notre Politique de confidentialité et de protection des données.",
+      "errorName": "Veuillez saisir votre nom.",
+      "errorPhone": "Veuillez saisir un numéro de téléphone.",
+      "errorConsent": "Veuillez accepter la Politique de confidentialité et de protection des données pour continuer.",
+      "emailSubject": "Demande immobilière de {name}"
+    },
+    "photoAlt": "La ligne d'horizon de Business Bay au-dessus de Dubai Marina, le marché de Maison Monchef."
+  },
+  "collection": {
+    "metaTitle": "Explorer les biens",
+    "eyebrow": "Biens",
+    "heading": "Explorer les biens",
+    "intro": "Une sélection choisie de résidences à travers Dubaï. Vente, sur plan et au-delà. Filtrez selon ce qui compte pour vous.",
+    "loadMore": "Voir plus",
+    "empty": "Aucun bien ne correspond à vos filtres pour l'instant. Ajustez-les, ou contactez-nous pour des opportunités hors marché.",
+    "dubai": "Dubaï",
+    "filters": {
+      "status": "Statut",
+      "statusAll": "Tous",
+      "category": "Catégorie",
+      "priceRange": "Fourchette de prix",
+      "location": "Emplacement"
+    },
+    "statuses": {
+      "sales": "Vente résidentielle",
+      "off-plan": "Sur plan",
+      "secondary": "Marché secondaire"
+    },
+    "categories": {
+      "apartment": "Appartement",
+      "penthouse": "Penthouse",
+      "villa": "Villa",
+      "townhouse": "Maison de ville"
+    },
+    "locations": {
+      "business-bay": "Business Bay",
+      "palm-jumeirah": "Palm Jumeirah",
+      "downtown-dubai": "Downtown Dubai",
+      "dubai-marina": "Dubai Marina",
+      "arjan": "Arjan",
+      "dubai-hills": "Dubai Hills"
+    }
+  },
+  "properties": {
+    "eyebrow": "Nos biens",
+    "heading": "Sélectionnés pour ceux qui choisissent avec soin.",
+    "intro": "Des biens choisis non pour le nombre, mais pour ce qu'ils incarnent : précision, discrétion et valeur durable.",
+    "forSale": "À vendre",
+    "startingPrice": "/Prix de départ",
+    "details": "Voir le bien",
+    "prev": "Bien précédent",
+    "next": "Bien suivant",
+    "features": {
+      "area": "Surface",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salles de bain",
+      "floors": "Étages",
+      "parking": "Parkings",
+      "balconies": "Balcons"
+    }
+  },
+  "propertyDetail": {
+    "breadcrumbHome": "Accueil",
+    "breadcrumbProperties": "Biens",
+    "photo": "Photo",
+    "notProvided": "—",
+    "sqft": "pi²",
+    "gallery": {
+      "prev": "Image précédente",
+      "next": "Image suivante",
+      "thumb": "Voir l'image"
+    },
+    "info": {
+      "heading": "Informations sur le bien",
+      "price": "Prix",
+      "completionYear": "Année de livraison",
+      "livingSpace": "Surface habitable",
+      "floors": "Étages",
+      "bedrooms": "Chambres",
+      "bathrooms": "Salles de bain"
+    },
+    "amenitiesHeading": "Équipements et prestations",
+    "video": {
+      "heading": "Vidéo du bien",
+      "placeholder": "Une visite vidéo complète de cette résidence sera bientôt disponible."
+    },
+    "sidebar": {
+      "heading": "Demander une visite",
+      "supporting": "Pas de formulaires, pas d'attente — juste une conversation. Organisez une visite privée directement avec notre équipe.",
+      "cta": "Réserver une visite"
+    },
+    "whatsappMessage": "Bonjour Maison Monchef, je souhaite réserver une visite de {property}.",
+    "relatedHeading": "Vous pourriez aussi considérer",
+    "viewAll": "Voir tout"
+  }
+}
