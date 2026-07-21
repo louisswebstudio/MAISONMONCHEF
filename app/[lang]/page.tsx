@@ -29,7 +29,7 @@ export default async function HomePage({
   return (
     <>
       <Hero lang={locale} dict={dict} />
-      <Partners dict={dict} />
+      <Partners dict={dict} rtl={getDir(locale) === "rtl"} />
       <FeaturedListings lang={locale} dict={dict} />
       <Process lang={locale} dict={dict} />
       <Properties lang={locale} dict={dict} />

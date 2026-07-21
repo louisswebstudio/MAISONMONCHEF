@@ -51,10 +51,14 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         <source src="/brand/videobg.mp4" type="video/mp4" />
       </video>
 
-      {/* Full mask: diagonal blur + tint band over the photo (node 138:1680) */}
+      {/* Full mask: diagonal blur + tint band over the photo (node 138:1680).
+          The source mask/gradient are authored for LTR (concentrated on the
+          left, behind the text). `rtl:-scale-x-100` mirrors this single layer
+          horizontally so the blur follows the text to the right side under
+          Arabic, without needing a second hand-authored mask asset. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0"
+        className="pointer-events-none absolute inset-0 rtl:-scale-x-100"
         style={{
           // Overlay opacity raised (0.2 → 0.55) so the white heading/subtext
           // clear WCAG AA over the bright blurred skyline (UI/UX pass).

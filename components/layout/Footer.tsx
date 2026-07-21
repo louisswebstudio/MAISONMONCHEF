@@ -50,10 +50,14 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           className="object-cover"
         />
 
-        {/* Full mask: diagonal blur + tint band over the text side. */}
+        {/* Full mask: diagonal blur + tint band over the text side. The mask +
+            gradient are authored for LTR (concentrated on the left, behind the
+            text). `rtl:-scale-x-100` mirrors this single layer horizontally so
+            the blur follows the text to the right under Arabic — same technique
+            the Hero uses, no second hand-authored mask asset needed. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0"
+          className="pointer-events-none absolute inset-0 rtl:-scale-x-100"
           style={{
             backgroundImage:
               "linear-gradient(-48.71764583725056deg, rgba(0,0,0,0) 42%, rgba(0,0,0,0.55) 100%)",

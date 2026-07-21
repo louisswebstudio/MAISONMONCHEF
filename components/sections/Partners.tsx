@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { DEVELOPERS, type Developer } from "@/lib/developers";
 import { Container } from "@/components/layout/Container";
+import { cn } from "@/lib/utils";
 
 /**
  * "Developers We Work With" — an infinite, single-line logo ticker. The list
@@ -23,8 +24,25 @@ import { Container } from "@/components/layout/Container";
  * rest. The source PNGs are pre-trimmed tight to their marks. All 7 developers
  * now have real logo files. The track pauses on hover and is fully static under
  * prefers-reduced-motion.
+ *
+ * Direction: the shared keyframe always slides the track leftward (logos scroll
+ * right-to-left), which reads correctly for the LTR locales. For Arabic (RTL)
+ * the flow is reversed so logos scroll left-to-right — done exactly as the
+ * Testimonials marquee does it (same mechanic): the track box is forced
+ * `dir="ltr"` so its positioning math (a `w-max` box anchors to its inline-start
+ * edge, and the `translateX(0 → -50%)` keyframe assumes a left anchor) is
+ * unaffected by page direction, then `[animation-direction:reverse]` runs the
+ * identical keyframe from -50% to 0 — visually seamless on a periodic track and
+ * scrolling the opposite way. Logos are never mirrored: only the container's
+ * scroll direction flips.
  */
-export function Partners({ dict }: { dict: Dictionary }) {
+export function Partners({
+  dict,
+  rtl = false,
+}: {
+  dict: Dictionary;
+  rtl?: boolean;
+}) {
   const track = [...DEVELOPERS, ...DEVELOPERS];
 
   return (
@@ -34,6 +52,7 @@ export function Partners({ dict }: { dict: Dictionary }) {
       </h2>
 
       <div
+        dir="ltr"
         className="group relative mt-10 overflow-hidden"
         style={{
           maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
@@ -46,7 +65,12 @@ export function Partners({ dict }: { dict: Dictionary }) {
 
         <ul
           aria-hidden
-          className="flex w-max animate-marquee items-center group-hover:[animation-play-state:paused] motion-reduce:animate-none"
+          className={cn(
+            "flex w-max animate-marquee items-center group-hover:[animation-play-state:paused] motion-reduce:animate-none",
+            // RTL flow: run the same leftward keyframe in reverse so the track
+            // travels rightward (logos scroll left-to-right). See header note.
+            rtl && "[animation-direction:reverse]",
+          )}
         >
           {track.map((dev, i) => (
             <li key={`${dev.name}-${i}`} className="me-[70px] shrink-0">

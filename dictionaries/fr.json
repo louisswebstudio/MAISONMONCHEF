@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Maison Monchef",
-    "defaultTitle": "Maison Monchef — Immobilier de prestige, Dubaï",
-    "defaultDescription": "Maison Monchef Real Estate — une institution bâtie pour durer. Ventes résidentielles, sur plan, marché secondaire et conseil en investissement à Dubaï."
+    "defaultTitle": "Maison Monchef | Immobilier de prestige, Dubaï",
+    "defaultDescription": "Maison Monchef Real Estate : une institution bâtie pour durer. Ventes résidentielles, sur plan, marché secondaire et conseil en investissement à Dubaï."
   },
   "nav": {
     "home": "Accueil",
@@ -22,10 +22,10 @@
   "footer": {
     "ctaEyebrow": "Commencer",
     "ctaHeading": "Faisons votre prochain pas, en toute discrétion.",
-    "ctaSubtext": "Contactez-nous directement — sans formulaires, sans file d'attente, juste une conversation.",
+    "ctaSubtext": "Contactez-nous directement. Sans formulaires, sans file d'attente, juste une conversation.",
     "ctaExplore": "Explorer les biens",
     "ctaContact": "Nous contacter",
-    "tagline": "Une institution bâtie pour durer — conseil immobilier de prestige à Business Bay, Dubaï.",
+    "tagline": "Une institution bâtie pour durer, conseil immobilier de prestige à Dubaï.",
     "contact": "Nous contacter",
     "links": "Liens",
     "properties": "Biens",
@@ -40,9 +40,9 @@
   },
   "hero": {
     "tagRanking": "#01",
-    "tagLabel": "Maison immobilière, Business Bay",
+    "tagLabel": "Maison immobilière, Dubaï",
     "heading": "Une institution bâtie pour durer.",
-    "subtext": "Conseil immobilier de prestige pour les clients les plus exigeants de Dubaï — ventes résidentielles, sur plan et construction de portefeuille, avec une précision tranquille.",
+    "subtext": "Conseil immobilier de prestige pour les clients les plus exigeants de Dubaï : ventes résidentielles, sur plan et construction de portefeuille, avec une précision tranquille.",
     "ctaPrimary": "Explorer les biens",
     "ctaSecondary": "À propos"
   },
@@ -73,7 +73,7 @@
   },
   "ourValue": {
     "eyebrow": "Pourquoi nous",
-    "heading": "Le choix réfléchi de Business Bay",
+    "heading": "Le choix réfléchi de Dubaï",
     "photoAlt": "Le fondateur de Maison Monchef dans les bureaux de la maison à Business Bay.",
     "cards": {
       "positioning": {
@@ -177,7 +177,7 @@
       },
       {
         "question": "Traitez-vous les biens sur plan ?",
-        "answer": "Oui. Nous conseillons sur les opportunités sur plan des principaux promoteurs de Dubaï, en évaluant chaque projet sur ses fondamentaux — historique du promoteur, emplacement et valeur à long terme — avant de le recommander."
+        "answer": "Oui. Nous conseillons sur les opportunités sur plan des principaux promoteurs de Dubaï, en évaluant chaque projet sur ses fondamentaux (historique du promoteur, emplacement et valeur à long terme) avant de le recommander."
       },
       {
         "question": "Pouvez-vous aider à constituer un portefeuille d'investissement ?",
@@ -185,7 +185,7 @@
       },
       {
         "question": "La consultation est-elle confidentielle ?",
-        "answer": "Toujours. La discrétion est au cœur de notre façon de travailler — chaque échange, mandat et transaction est traité en toute confidentialité."
+        "answer": "Toujours. La discrétion est au cœur de notre façon de travailler : chaque échange, mandat et transaction est traité en toute confidentialité."
       },
       {
         "question": "Accompagnez-vous les clients en arabe et en français ?",
@@ -193,7 +193,7 @@
       },
       {
         "question": "Comment commencer ?",
-        "answer": "Contactez-nous simplement — par téléphone, WhatsApp ou le formulaire de contact. Un premier échange rapide nous permet de comprendre vos objectifs et de proposer la prochaine étape adaptée."
+        "answer": "Contactez-nous simplement : par téléphone, WhatsApp ou le formulaire de contact. Un premier échange rapide nous permet de comprendre vos objectifs et de proposer la prochaine étape adaptée."
       }
     ]
   },
@@ -230,7 +230,7 @@
     "metaTitle": "Journal",
     "eyebrow": "Perspectives",
     "title": "Le Journal",
-    "subtitle": "Regard sur l'immobilier de Dubaï — évolutions du marché, propriété, et ce qu'une expertise discrète change vraiment.",
+    "subtitle": "Regard sur l'immobilier de Dubaï : évolutions du marché, propriété, et ce qu'une expertise discrète change vraiment.",
     "sortBy": "Trier par",
     "sortLatest": "Plus récents",
     "sortOldest": "Plus anciens",
@@ -268,10 +268,10 @@
   },
   "contact": {
     "metaTitle": "Contact",
-    "metaDescription": "Échangez directement avec Maison Monchef — sans formulaires, sans files d'attente, juste une conversation. Joignez-nous par téléphone, WhatsApp ou e-mail pour un conseil immobilier d'exception à Business Bay, Dubaï.",
+    "metaDescription": "Échangez directement avec Maison Monchef. Sans formulaires, sans files d'attente, juste une conversation. Joignez-nous par téléphone, WhatsApp ou e-mail pour un conseil immobilier d'exception à Dubaï.",
     "eyebrow": "Contactez-nous",
     "heading": "Contactez-nous",
-    "subhead": "Contactez-nous directement — sans formulaires, sans files d'attente, juste une conversation.",
+    "subhead": "Contactez-nous directement. Sans formulaires, sans files d'attente, juste une conversation.",
     "items": {
       "officeLabel": "Bureau",
       "directLabel": "Ligne directe",
@@ -299,7 +299,7 @@
       "errorConsent": "Veuillez accepter la Politique de confidentialité et de protection des données pour continuer.",
       "emailSubject": "Demande immobilière de {name}"
     },
-    "photoAlt": "La ligne d'horizon de Business Bay au-dessus de Dubai Marina, le marché de Maison Monchef."
+    "photoAlt": "Une réception baignée de lumière avec une porte cintrée et vue sur le Burj Khalifa, l'adresse de Maison Monchef à Dubaï."
   },
   "collection": {
     "metaTitle": "Explorer les biens",
@@ -381,7 +381,7 @@
     },
     "sidebar": {
       "heading": "Demander une visite",
-      "supporting": "Pas de formulaires, pas d'attente — juste une conversation. Organisez une visite privée directement avec notre équipe.",
+      "supporting": "Pas de formulaires, pas d'attente, juste une conversation. Organisez une visite privée directement avec notre équipe.",
       "cta": "Réserver une visite"
     },
     "whatsappMessage": "Bonjour Maison Monchef, je souhaite réserver une visite de {property}.",

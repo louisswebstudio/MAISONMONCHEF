@@ -74,7 +74,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "investment",
     title: "Reading Dubai's Off-Plan Market in 2026",
     excerpt:
-      "Where the fundamentals point this year — and the projects worth waiting for.",
+      "Where the fundamentals point this year, and the projects worth waiting for.",
     readMinutes: 9,
     date: "2026-05-14",
     image: IMG,
@@ -104,7 +104,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "buyingTips",
     title: "The Buyer's Checklist for Business Bay",
     excerpt:
-      "The questions to ask before you commit — from service charges to skyline.",
+      "The questions to ask before you commit, from service charges to skyline.",
     readMinutes: 7,
     date: "2026-03-29",
     image: IMG,
@@ -144,7 +144,7 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "investment",
     title: "The Quiet Case for Long-Term Ownership",
     excerpt:
-      "Patience as strategy — how holding well-chosen assets outperforms the churn.",
+      "Patience as strategy: how holding well-chosen assets outperforms the churn.",
     readMinutes: 15,
     date: "2026-01-20",
     image: IMG,

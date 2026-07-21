@@ -62,10 +62,14 @@ export function Nav({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           {/* Desktop nav — centered on the 1240px bar, offset -41px from dead
               center to match node 138:3585 (Figma balances it against the
               logo + right cluster rather than true 50%). `start-[calc(...)]`
-              is a logical inset, so it mirrors automatically under dir="rtl". */}
+              is a logical inset, so it mirrors automatically under dir="rtl".
+              `translate-x` is a PHYSICAL transform, so it must be flipped by
+              direction (`ltr:`/`rtl:`) — otherwise under RTL the logical inset
+              mirrors but the transform still pulls left, dragging the links
+              off-center into the language switcher. */}
           <nav
             aria-label="Primary"
-            className="absolute start-[calc(50%-41px)] top-1/2 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-10 lg:flex"
+            className="absolute start-[calc(50%-41px)] top-1/2 hidden -translate-y-1/2 items-center gap-10 ltr:-translate-x-1/2 rtl:translate-x-1/2 lg:flex"
           >
             {links.map((l) => (
               <Link

@@ -1,8 +1,8 @@
 {
   "meta": {
     "siteName": "Maison Monchef",
-    "defaultTitle": "Maison Monchef — Boutique Real Estate, Dubai",
-    "defaultDescription": "Maison Monchef Real Estate — an institution built to endure. Residential sales, off-plan, secondary market and investment advisory in Dubai."
+    "defaultTitle": "Maison Monchef | Boutique Real Estate, Dubai",
+    "defaultDescription": "Maison Monchef Real Estate: an institution built to endure. Residential sales, off-plan, secondary market and investment advisory in Dubai."
   },
   "nav": {
     "home": "Home",
@@ -22,10 +22,10 @@
   "footer": {
     "ctaEyebrow": "Get started",
     "ctaHeading": "Let's make your next move, privately.",
-    "ctaSubtext": "Reach out directly — no forms, no queues, just a conversation.",
+    "ctaSubtext": "Reach out directly. No forms, no queues, just a conversation.",
     "ctaExplore": "Explore Properties",
     "ctaContact": "Contact us",
-    "tagline": "An institution built to endure — boutique real estate advisory in Business Bay, Dubai.",
+    "tagline": "An institution built to endure, boutique real estate advisory in Dubai.",
     "contact": "Contact Us",
     "links": "Links",
     "properties": "Properties",
@@ -40,9 +40,9 @@
   },
   "hero": {
     "tagRanking": "#01",
-    "tagLabel": "Real Estate House, Business Bay",
+    "tagLabel": "Real Estate House, Dubai",
     "heading": "An institution built to endure.",
-    "subtext": "Boutique real estate advisory for Dubai's most discerning clients residential sales, off-plan, and portfolio building, guided with quiet precision.",
+    "subtext": "Boutique real estate advisory for Dubai's most discerning clients: residential sales, off-plan, and portfolio building, guided with quiet precision.",
     "ctaPrimary": "Explore properties",
     "ctaSecondary": "About Us"
   },
@@ -73,7 +73,7 @@
   },
   "ourValue": {
     "eyebrow": "Why us",
-    "heading": "Business Bay’s considered choice",
+    "heading": "Dubai’s considered choice",
     "photoAlt": "The founder of Maison Monchef at the firm's Business Bay office.",
     "cards": {
       "positioning": {
@@ -155,7 +155,7 @@
         "initials": "FA",
         "name": "Fatima A.",
         "role": "Investment Advisory, Binghatti",
-        "quote": "I was comparing several projects before deciding. Their advice wasn’t based on making a sale — it was based on what made sense for my goals. That honesty earned my trust."
+        "quote": "I was comparing several projects before deciding. Their advice wasn’t based on making a sale; it was based on what made sense for my goals. That honesty earned my trust."
       },
       {
         "initials": "SL",
@@ -177,7 +177,7 @@
       },
       {
         "question": "Do you handle off-plan properties?",
-        "answer": "We do. We advise on off-plan opportunities from Dubai's leading developers, assessing each project on its fundamentals — developer track record, location, and long-term value — before we recommend it."
+        "answer": "We do. We advise on off-plan opportunities from Dubai's leading developers, assessing each project on its fundamentals (developer track record, location, and long-term value) before we recommend it."
       },
       {
         "question": "Can you help build an investment portfolio?",
@@ -185,7 +185,7 @@
       },
       {
         "question": "Is consultation confidential?",
-        "answer": "Always. Discretion is fundamental to how we work — every conversation, mandate, and transaction is handled in strict confidence."
+        "answer": "Always. Discretion is fundamental to how we work: every conversation, mandate, and transaction is handled in strict confidence."
       },
       {
         "question": "Do you support clients in Arabic and French?",
@@ -193,7 +193,7 @@
       },
       {
         "question": "How do I get started?",
-        "answer": "Simply reach out — by phone, WhatsApp, or the contact form. A short first conversation lets us understand your goals and propose the right next step."
+        "answer": "Simply reach out: by phone, WhatsApp, or the contact form. A short first conversation lets us understand your goals and propose the right next step."
       }
     ]
   },
@@ -230,7 +230,7 @@
     "metaTitle": "Journal",
     "eyebrow": "Insights",
     "title": "The Journal",
-    "subtitle": "Perspective on Dubai real estate — market shifts, ownership, and what quiet expertise actually looks like.",
+    "subtitle": "Perspective on Dubai real estate: market shifts, ownership, and what quiet expertise actually looks like.",
     "sortBy": "Sort by",
     "sortLatest": "Latest first",
     "sortOldest": "Oldest first",
@@ -268,10 +268,10 @@
   },
   "contact": {
     "metaTitle": "Contact",
-    "metaDescription": "Speak directly with Maison Monchef — no forms, no queues, just a conversation. Reach us by phone, WhatsApp, or email for boutique real estate advisory in Business Bay, Dubai.",
+    "metaDescription": "Speak directly with Maison Monchef. No forms, no queues, just a conversation. Reach us by phone, WhatsApp, or email for boutique real estate advisory in Dubai.",
     "eyebrow": "Get in touch",
     "heading": "Contact Us",
-    "subhead": "Reach out directly — no forms, no queues, just a conversation.",
+    "subhead": "Reach out directly. No forms, no queues, just a conversation.",
     "items": {
       "officeLabel": "Office",
       "directLabel": "Direct Line",
@@ -299,7 +299,7 @@
       "errorConsent": "Please accept the Privacy and Data Protection Policy to continue.",
       "emailSubject": "Property enquiry from {name}"
     },
-    "photoAlt": "The Business Bay skyline over Dubai Marina, Maison Monchef's home market."
+    "photoAlt": "A sunlit reception with an arched doorway and a view of the Burj Khalifa, Maison Monchef's Dubai home."
   },
   "collection": {
     "metaTitle": "Explore Properties",
@@ -381,7 +381,7 @@
     },
     "sidebar": {
       "heading": "Request a Viewing",
-      "supporting": "No forms, no queues — just a conversation. Arrange a private viewing directly with our team.",
+      "supporting": "No forms, no queues, just a conversation. Arrange a private viewing directly with our team.",
       "cta": "Book a Viewing"
     },
     "whatsappMessage": "Hello Maison Monchef, I would like to book a viewing of {property}.",

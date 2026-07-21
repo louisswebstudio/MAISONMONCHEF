@@ -46,10 +46,17 @@ export function ProcessTimeline({ steps }: { steps: Step[] }) {
 
   return (
     <div ref={containerRef} className="relative isolate flex flex-1 flex-col">
+      {/* Logical inline-start offset (not a fixed `left`): the icon tile is the
+          inline-start child of each step row, so `start-[33px]` centers the line
+          behind the tile on whichever side the column falls — inline-start in
+          LTR (left) and, mirrored, inline-end in RTL (right). A hardcoded
+          `left-[33px]` left the Arabic line stranded on the left, away from the
+          right-hand icon column. 33px = half the 66px tile (56px inner + 5px
+          padding each side). */}
       <span
         ref={lineRef}
         aria-hidden
-        className="absolute left-[33px] -z-10 w-[3px] bg-linen"
+        className="absolute start-[33px] -z-10 w-[3px] bg-linen"
       />
       {steps.map((step, i) => (
         <Reveal key={step.title} delay={i * 140}>

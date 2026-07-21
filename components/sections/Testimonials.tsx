@@ -151,7 +151,7 @@ export function Testimonials({
         <ul className="sr-only">
           {items.map((item) => (
             <li key={item.name}>
-              {item.quote} — {item.name}, {item.role}
+              {item.quote}. {item.name}, {item.role}.
             </li>
           ))}
         </ul>

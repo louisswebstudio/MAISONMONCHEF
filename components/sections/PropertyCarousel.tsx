@@ -464,7 +464,7 @@ export function PropertyCarousel({
       {/* Announce the centred listing; the cards themselves are ordinary
           content, so this only carries the position change. */}
       <span aria-live="polite" className="sr-only">
-        {active.title} — {activeIndex + 1} / {total}
+        {active.title}, {activeIndex + 1} / {total}
       </span>
     </div>
   );

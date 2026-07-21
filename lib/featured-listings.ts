@@ -35,7 +35,7 @@ const PLACEHOLDER = {
   price: "AED 3,650,000",
   title: "The Sundial Residence",
   description:
-    "A residence chosen for what it represents — precision, discretion, and lasting value.",
+    "A residence chosen for what it represents: precision, discretion, and lasting value.",
   beds: 3,
   baths: 3,
   area: 2150,
