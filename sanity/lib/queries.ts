@@ -7,6 +7,23 @@ import { groq } from "next-sanity";
  * location, price, …) are never localized — see the listing schema.
  */
 
+/**
+ * The computed project-card fields, shared by every listing query. A listing is
+ * a PROJECT with an array of unit types; cards show a starting (lowest) price and
+ * a bedroom / size RANGE across those units. Each value coalesces to the
+ * DEPRECATED single-unit field (`price`/`bedrooms`/`sizeSqft`) so documents that
+ * haven't been migrated to `unitTypes[]` yet still render a sensible card. The
+ * `.{ "v": … }.v` projection on `maxSize` takes each unit's max (or its min when
+ * fixed) before `math::max`, so a project's high end is never understated.
+ */
+const CARD_COMPUTED_FIELDS = `
+    "startingPrice": coalesce(math::min(unitTypes[].price), price),
+    "minSize": coalesce(math::min(unitTypes[].minSizeSqft), sizeSqft),
+    "maxSize": coalesce(math::max(unitTypes[]{ "v": coalesce(maxSizeSqft, minSizeSqft) }.v), sizeSqft),
+    "minBeds": coalesce(math::min(unitTypes[].bedrooms), bedrooms),
+    "maxBeds": coalesce(math::max(unitTypes[].bedrooms), bedrooms)
+`;
+
 /** All published listings for the Collection page, oldest first (stable order). */
 export const collectionListingsQuery = groq`
   *[_type == "listing" && !(_id in path("drafts.**"))] | order(_createdAt asc) {
@@ -17,15 +34,17 @@ export const collectionListingsQuery = groq`
     status,
     category,
     location,
-    price,
-    bedrooms,
-    bathrooms,
-    sizeSqft,
+    ${CARD_COMPUTED_FIELDS},
     "image": gallery[0],
   }
 `;
 
-/** Shape returned by {@link collectionListingsQuery}. */
+/**
+ * The computed card shape shared by the Collection grid, the "You May Also
+ * Consider" row, and (as `related`) the detail query. `startingPrice` is the
+ * lowest unit price; beds/size are ranges (min === max when the project has a
+ * single configuration).
+ */
 export type CollectionListing = {
   _id: string;
   name: string;
@@ -34,10 +53,11 @@ export type CollectionListing = {
   status: string;
   category?: string;
   location: string;
-  price: number;
-  bedrooms?: number;
-  bathrooms?: number;
-  sizeSqft?: number;
+  startingPrice: number;
+  minSize?: number;
+  maxSize?: number;
+  minBeds?: number;
+  maxBeds?: number;
   image?: import("sanity").Image | null;
 };
 
@@ -60,10 +80,7 @@ export const featuredCarouselQuery = groq`
     "name": coalesce(name[$lang], name.en),
     "slug": slug.current,
     location,
-    price,
-    bedrooms,
-    bathrooms,
-    sizeSqft,
+    ${CARD_COMPUTED_FIELDS},
     floors,
     "image": gallery[0],
   }
@@ -75,10 +92,11 @@ export type FeaturedCarouselListing = {
   name: string;
   slug: string;
   location: string;
-  price: number;
-  bedrooms?: number;
-  bathrooms?: number;
-  sizeSqft?: number;
+  startingPrice: number;
+  minSize?: number;
+  maxSize?: number;
+  minBeds?: number;
+  maxBeds?: number;
   floors?: number;
   image?: import("sanity").Image | null;
 };
@@ -105,10 +123,16 @@ export const listingBySlugQuery = groq`
     status,
     category,
     location,
-    price,
-    bedrooms,
-    bathrooms,
-    sizeSqft,
+    ${CARD_COMPUTED_FIELDS},
+    "unitTypes": unitTypes[]{
+      "label": coalesce(label[$lang], label.en),
+      price,
+      bedrooms,
+      bathrooms,
+      minSizeSqft,
+      maxSizeSqft,
+      unitsAvailable
+    },
     completionYear,
     floors,
     videoUrl,
@@ -139,10 +163,7 @@ export const listingBySlugQuery = groq`
       status,
       category,
       location,
-      price,
-      bedrooms,
-      bathrooms,
-      sizeSqft,
+      ${CARD_COMPUTED_FIELDS},
       "image": gallery[0]
     }
   }
@@ -229,6 +250,17 @@ export type ListingAmenity = {
   order?: number;
 };
 
+/** One unit configuration within a project listing (localized label). */
+export type UnitType = {
+  label: string;
+  price: number;
+  bedrooms?: number;
+  bathrooms?: number;
+  minSizeSqft: number;
+  maxSizeSqft?: number;
+  unitsAvailable?: number;
+};
+
 /** Shape returned by {@link listingBySlugQuery}. */
 export type ListingDetail = {
   _id: string;
@@ -238,10 +270,12 @@ export type ListingDetail = {
   status: string;
   category?: string;
   location: string;
-  price: number;
-  bedrooms?: number;
-  bathrooms?: number;
-  sizeSqft?: number;
+  startingPrice: number;
+  minSize?: number;
+  maxSize?: number;
+  minBeds?: number;
+  maxBeds?: number;
+  unitTypes?: UnitType[];
   completionYear?: number;
   floors?: number;
   videoUrl?: string;

@@ -556,6 +556,11 @@ function PropertyCard({
         <div className="mt-auto flex flex-col gap-[14px]">
           <div className="h-px w-full bg-navy/10" />
           <span className="text-[36px] font-semibold leading-[38px] tracking-[-0.6px] text-navy">
+            {property.pricePrefix && (
+              <span className="me-[8px] text-[16px] font-normal tracking-normal text-charcoal/70">
+                {property.pricePrefix}
+              </span>
+            )}
             {property.price}
           </span>
           <Link

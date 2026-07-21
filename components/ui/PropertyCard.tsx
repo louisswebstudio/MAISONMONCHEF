@@ -28,8 +28,14 @@ export type PropertyCardData = {
   imageAlt?: string;
   /** Location label, e.g. "Business Bay, Dubai". */
   location: string;
-  /** Pre-formatted price incl. currency, e.g. "AED 3,650,000". */
+  /** Pre-formatted price amount incl. currency, e.g. "AED 3,650,000". */
   price: string;
+  /**
+   * Optional de-emphasized prefix shown small/regular before the price, e.g.
+   * "From" / "من" / "À partir de". Kept separate from `price` so it can be
+   * styled lighter than the bold amount.
+   */
+  pricePrefix?: string;
   title: string;
   description?: string;
   beds?: number | string;
@@ -111,6 +117,11 @@ export function PropertyCard({
         <div className="mt-auto flex flex-col gap-[10px] pt-[14px]">
           <div className="h-px w-full bg-navy/10" />
           <span className="text-[24px] font-semibold leading-[30px] tracking-[-0.4px] text-navy">
+            {data.pricePrefix && (
+              <span className="me-[6px] text-[13px] font-normal tracking-normal text-charcoal/70">
+                {data.pricePrefix}
+              </span>
+            )}
             {data.price}
           </span>
           <span className="inline-flex min-h-[44px] w-full items-center justify-center bg-navy px-4 py-2 text-[15px] font-medium leading-[24.8px] tracking-[-0.32px] text-white transition-colors duration-150 group-hover:bg-charcoal">

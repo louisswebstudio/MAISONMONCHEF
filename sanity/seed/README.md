@@ -10,6 +10,8 @@ npx sanity dataset import sanity/seed/amenities.ndjson production
 npx sanity dataset import sanity/seed/showcase-listing.ndjson production
 npx sanity dataset import sanity/seed/test-listings.ndjson production
 npx sanity dataset import sanity/seed/blog-posts.ndjson production
+# greencrest-listings.ndjson is SUPERSEDED by greencrest-project.ndjson — see below.
+npx sanity dataset import sanity/seed/greencrest-project.ndjson production
 ```
 
 ## `amenities.ndjson`
@@ -81,4 +83,46 @@ Delete the placeholder/QA docs before launch:
 
 ```bash
 npx sanity documents delete listing.showcase-sundial listing.test-all-amenities listing.test-partial-amenities
+```
+
+## `greencrest-project.ndjson` (current) & `greencrest-listings.ndjson` (superseded)
+
+First real (non-placeholder) listing — sourced from a competitor brokerage's
+public project page (springfieldproperties.ae), facts only (price, unit mix,
+location, handover date, developer), not their marketing copy or photos.
+Description text is original.
+
+Greencrest at Dubai Hills Estate, by Emaar — off-plan, Q2 2029 handover. Now
+modelled as **one project** (`listing.greencrest-dubai-hills`) with a
+`unitTypes[]` breakdown, matching the project-level schema:
+
+- `unitTypes[0]` — 1 Bedroom, AED 1.57M, 774 sq ft
+- `unitTypes[1]` — 2 Bedroom, AED 2.60M, 1,266 sq ft
+- `unitTypes[2]` — 3 Bedroom, AED 3.89M, 1,735 sq ft
+
+Cards show a computed "From AED 1,570,000" and a 774–1,735 sq ft range; the
+detail page renders the three rows in its Unit Types table.
+
+`developer.emaar` (`isPlaceholder: true` — no logo yet) is bundled as the first
+line of `greencrest-project.ndjson`, so the project is self-contained for the
+developer reference. The three amenity references (`amenity.gym`,
+`amenity.kids-play-area`, `amenity.bbq-area`) are NOT bundled — they must already
+exist, so **import `amenities.ndjson` before this file** (see the import order at
+the top). Only 3 of the source project's ~9 amenities matched the locked 12-item
+taxonomy (Gym, Kids Play Area, BBQ Area); the rest were left untagged. No
+`gallery` images yet — add real photography before publishing (the source page's
+photos aren't ours to use).
+
+### Migration: retire the old single-unit Greencrest docs
+
+`greencrest-listings.ndjson` seeded **three separate** single-unit listings
+(`listing.greencrest-1br/2br/3br`) — the pre-`unitTypes` shape. The
+project-level model replaces all three with the single doc above. After
+importing `greencrest-project.ndjson` **and verifying** the new project card +
+detail page render, delete the superseded docs (this is destructive — only run
+once the new doc is confirmed live):
+
+```bash
+npx sanity documents delete \
+  listing.greencrest-1br listing.greencrest-2br listing.greencrest-3br
 ```

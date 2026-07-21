@@ -17,6 +17,7 @@ import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { FeaturedCarouselListing } from "@/sanity/lib/queries";
 import { urlForImage } from "@/sanity/lib/image";
+import { formatPriceAmount, formatRange } from "@/lib/listing-format";
 
 export type PropertyFeature = "area" | "bedrooms" | "bathrooms" | "floors" | "parking" | "balconies";
 
@@ -25,8 +26,10 @@ export type FeaturedProperty = {
   title: string;
   /** Real Dubai area label (proper noun — not translated per-locale). */
   location: string;
-  /** Pre-formatted price string incl. currency, as authored in Figma. */
+  /** Pre-formatted price amount incl. currency, e.g. "AED 3,650,000". */
   price: string;
+  /** Optional de-emphasized prefix (e.g. "From") shown small/regular before the price. */
+  pricePrefix?: string;
   image: string;
   /** Feature key → value string, in display order. */
   features: { key: PropertyFeature; value: string }[];
@@ -60,13 +63,14 @@ export function listingToFeaturedProperty(
   const locationLabel =
     tc.locations[listing.location as keyof typeof tc.locations] ?? listing.location;
 
+  // Project spotlight specs: size and bedroom RANGES across the project's unit
+  // types, plus project-level floors. Bathrooms are per-unit (shown in the
+  // detail page's Unit Types table), so they're not a project-level chip here.
   const features: { key: PropertyFeature; value: string }[] = [];
-  if (listing.sizeSqft != null)
-    features.push({ key: "area", value: listing.sizeSqft.toLocaleString("en-US") });
-  if (listing.bedrooms != null)
-    features.push({ key: "bedrooms", value: String(listing.bedrooms).padStart(2, "0") });
-  if (listing.bathrooms != null)
-    features.push({ key: "bathrooms", value: String(listing.bathrooms).padStart(2, "0") });
+  const areaRange = formatRange(listing.minSize, listing.maxSize);
+  if (areaRange != null) features.push({ key: "area", value: areaRange });
+  const bedsRange = formatRange(listing.minBeds, listing.maxBeds);
+  if (bedsRange != null) features.push({ key: "bedrooms", value: bedsRange });
   if (listing.floors != null)
     features.push({ key: "floors", value: String(listing.floors).padStart(2, "0") });
 
@@ -74,7 +78,8 @@ export function listingToFeaturedProperty(
     id: listing._id,
     title: listing.name,
     location: `${locationLabel}, ${tc.dubai}`,
-    price: `AED ${listing.price.toLocaleString("en-US")}`,
+    price: formatPriceAmount(listing.startingPrice),
+    pricePrefix: dict.listings.priceFrom,
     image: listing.image
       ? urlForImage(listing.image).width(1200).url()
       : PLACEHOLDER_IMAGE,
@@ -101,14 +106,12 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     title: "The Grove Residence",
     location: "Dubai Hills",
     price: "AED 950,000",
+    pricePrefix: "From",
     image: IMG_GROVE,
     features: [
-      { key: "area", value: "1,700" },
-      { key: "bedrooms", value: "04" },
-      { key: "bathrooms", value: "02" },
+      { key: "area", value: "1,700–2,400" },
+      { key: "bedrooms", value: "2–4" },
       { key: "floors", value: "03" },
-      { key: "parking", value: "02" },
-      { key: "balconies", value: "02" },
     ],
   },
   {
@@ -117,14 +120,12 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     title: "The Sundial Residence",
     location: "Palm Jumeirah",
     price: "AED 3,650,000",
+    pricePrefix: "From",
     image: IMG_SUNDIAL,
     features: [
-      { key: "area", value: "2,150" },
-      { key: "bedrooms", value: "03" },
-      { key: "bathrooms", value: "03" },
+      { key: "area", value: "2,150–3,100" },
+      { key: "bedrooms", value: "3–5" },
       { key: "floors", value: "02" },
-      { key: "parking", value: "02" },
-      { key: "balconies", value: "03" },
     ],
   },
   {
@@ -133,14 +134,12 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     title: "The Marina Residence",
     location: "Downtown Dubai",
     price: "AED 1,480,000",
+    pricePrefix: "From",
     image: IMG_MARINA,
     features: [
-      { key: "area", value: "1,400" },
-      { key: "bedrooms", value: "02" },
-      { key: "bathrooms", value: "02" },
+      { key: "area", value: "1,400–1,900" },
+      { key: "bedrooms", value: "1–3" },
       { key: "floors", value: "01" },
-      { key: "parking", value: "01" },
-      { key: "balconies", value: "02" },
     ],
   },
 ];
