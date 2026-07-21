@@ -587,7 +587,7 @@ function FeatureChip({
       <span className="flex items-center gap-[6px] whitespace-nowrap">
         <span className="text-[15px] font-semibold leading-[23.25px] tracking-[-0.3px] text-navy">
           {value}
-        </span>
+        </span>{" "}
         <span className="text-[15px] font-normal leading-[23.25px] tracking-[-0.3px] text-charcoal/75">
           {label}
         </span>

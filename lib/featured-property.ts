@@ -62,7 +62,7 @@ export function listingToFeaturedProperty(
 
   const features: { key: PropertyFeature; value: string }[] = [];
   if (listing.sizeSqft != null)
-    features.push({ key: "area", value: `${listing.sizeSqft.toLocaleString("en-US")} sq/ft` });
+    features.push({ key: "area", value: listing.sizeSqft.toLocaleString("en-US") });
   if (listing.bedrooms != null)
     features.push({ key: "bedrooms", value: String(listing.bedrooms).padStart(2, "0") });
   if (listing.bathrooms != null)
@@ -103,7 +103,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     price: "AED 950,000",
     image: IMG_GROVE,
     features: [
-      { key: "area", value: "1700 sq/ft" },
+      { key: "area", value: "1,700" },
       { key: "bedrooms", value: "04" },
       { key: "bathrooms", value: "02" },
       { key: "floors", value: "03" },
@@ -119,7 +119,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     price: "AED 3,650,000",
     image: IMG_SUNDIAL,
     features: [
-      { key: "area", value: "2150 sq/ft" },
+      { key: "area", value: "2,150" },
       { key: "bedrooms", value: "03" },
       { key: "bathrooms", value: "03" },
       { key: "floors", value: "02" },
@@ -135,7 +135,7 @@ export const FEATURED_PROPERTIES: FeaturedProperty[] = [
     price: "AED 1,480,000",
     image: IMG_MARINA,
     features: [
-      { key: "area", value: "1400 sq/ft" },
+      { key: "area", value: "1,400" },
       { key: "bedrooms", value: "02" },
       { key: "bathrooms", value: "02" },
       { key: "floors", value: "01" },

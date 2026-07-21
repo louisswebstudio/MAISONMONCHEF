@@ -135,7 +135,7 @@ function Spec({
     <div className="flex items-center gap-[6px] text-navy">
       <span className="shrink-0">{icon}</span>
       <span className="flex items-center gap-[4px] whitespace-nowrap">
-        <span className="text-[14px] font-semibold leading-[19.2px]">{value}</span>
+        <span className="text-[14px] font-semibold leading-[19.2px]">{value}</span>{" "}
         <span className="text-[12.5px] font-normal leading-[19.2px] text-charcoal/70">{label}</span>
       </span>
     </div>

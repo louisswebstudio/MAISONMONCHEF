@@ -86,7 +86,7 @@ export function BlogCard({
               <span className="flex items-center gap-[4px]">
                 <span className="text-[14px] font-normal leading-[24px] tracking-[0.3px]">
                   {data.minutes}
-                </span>
+                </span>{" "}
                 <span className="text-[12px] font-normal leading-[24px] tracking-[0.3px]">
                   {minutesLabel}
                 </span>

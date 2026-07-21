@@ -346,7 +346,7 @@
     "prev": "Bien précédent",
     "next": "Bien suivant",
     "features": {
-      "area": "Surface",
+      "area": "pi²",
       "bedrooms": "Chambres",
       "bathrooms": "Salles de bain",
       "floors": "Étages",
