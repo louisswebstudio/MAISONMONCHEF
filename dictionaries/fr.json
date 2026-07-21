@@ -56,6 +56,7 @@
     "beds": "Chambres",
     "baths": "Salles de bain",
     "area": "pi²",
+    "priceFrom": "À partir de",
     "forSale": "À vendre",
     "cta": "Voir le bien"
   },
@@ -360,6 +361,17 @@
     "photo": "Photo",
     "notProvided": "—",
     "sqft": "pi²",
+    "startingFrom": "À partir de",
+    "unitTypesHeading": "Types d'unités",
+    "studio": "Studio",
+    "unit": {
+      "label": "Type",
+      "beds": "Chambres",
+      "baths": "SdB",
+      "size": "Surface",
+      "price": "Prix",
+      "units": "Unités"
+    },
     "gallery": {
       "prev": "Image précédente",
       "next": "Image suivante",
@@ -367,7 +379,7 @@
     },
     "info": {
       "heading": "Informations sur le bien",
-      "price": "Prix",
+      "price": "Prix de départ",
       "completionYear": "Année de livraison",
       "livingSpace": "Surface habitable",
       "floors": "Étages",

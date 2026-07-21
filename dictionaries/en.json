@@ -56,6 +56,7 @@
     "beds": "Bedrooms",
     "baths": "Bathrooms",
     "area": "Sq Ft",
+    "priceFrom": "From",
     "forSale": "For sale",
     "cta": "View Listing"
   },
@@ -360,6 +361,17 @@
     "photo": "Photo",
     "notProvided": "—",
     "sqft": "sq ft",
+    "startingFrom": "Starting from",
+    "unitTypesHeading": "Unit Types",
+    "studio": "Studio",
+    "unit": {
+      "label": "Type",
+      "beds": "Beds",
+      "baths": "Baths",
+      "size": "Size",
+      "price": "Price",
+      "units": "Units"
+    },
     "gallery": {
       "prev": "Previous image",
       "next": "Next image",
@@ -367,7 +379,7 @@
     },
     "info": {
       "heading": "Property Info",
-      "price": "Price",
+      "price": "Starting Price",
       "completionYear": "Completion Year",
       "livingSpace": "Living Space",
       "floors": "Floors",

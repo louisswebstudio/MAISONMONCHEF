@@ -3,6 +3,7 @@ import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { CollectionListing } from "@/sanity/lib/queries";
 import type { PropertyCardData } from "@/components/ui/PropertyCard";
 import { urlForImage } from "@/sanity/lib/image";
+import { formatPriceAmount, formatRange } from "@/lib/listing-format";
 
 /** Local placeholder used until real gallery media is uploaded to the CMS. */
 const PLACEHOLDER_IMAGE = "/brand/listings/property-placeholder.jpg";
@@ -22,17 +23,20 @@ export function collectionListingToCardData(
   const locationLabel =
     tc.locations[listing.location as keyof typeof tc.locations] ?? listing.location;
 
+  // Project card: a starting price plus bedroom / size RANGES across unit types.
+  // Bathrooms are intentionally omitted here — they vary per unit and are shown
+  // in the detail page's Unit Types table, not on the summary card.
   return {
     href: `/${lang}/collection/${listing.slug}`,
     image: listing.image
       ? urlForImage(listing.image).width(800).url()
       : PLACEHOLDER_IMAGE,
     location: `${locationLabel}, ${tc.dubai}`,
-    price: `AED ${listing.price.toLocaleString("en-US")}`,
+    price: formatPriceAmount(listing.startingPrice),
+    pricePrefix: dict.listings.priceFrom,
     title: listing.name,
     description: listing.description,
-    beds: listing.bedrooms,
-    baths: listing.bathrooms,
-    area: listing.sizeSqft?.toLocaleString("en-US"),
+    beds: formatRange(listing.minBeds, listing.maxBeds),
+    area: formatRange(listing.minSize, listing.maxSize),
   };
 }

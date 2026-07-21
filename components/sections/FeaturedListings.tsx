@@ -64,11 +64,15 @@ export async function FeaturedListings({
         href: `/${lang}/collection`,
         image: listing.image,
         location: listing.location,
+        // Project card treatment (starting price, no per-unit bathrooms) so the
+        // fallback matches the real Sanity-backed cards above. `listing.price` is
+        // already a formatted "AED …" string; the "From" prefix is carried
+        // separately so it renders de-emphasized like the real cards.
         price: listing.price,
+        pricePrefix: dict.listings.priceFrom,
         title: listing.title,
         description: listing.description,
         beds: listing.beds,
-        baths: listing.baths,
         area: listing.area.toLocaleString("en-US"),
       },
     }));

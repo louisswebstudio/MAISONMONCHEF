@@ -76,11 +76,13 @@ export function CollectionExplorer({
       )
         return false;
       if (filters.priceRanges.length > 0) {
+        // Match by the project's starting (lowest) price — mirrors the "From
+        // AED X" shown on the card.
         const inRange = LISTING_PRICE_RANGES.some(
           (r) =>
             filters.priceRanges.includes(r.value) &&
-            l.price >= r.min &&
-            (r.max === null || l.price < r.max),
+            l.startingPrice >= r.min &&
+            (r.max === null || l.startingPrice < r.max),
         );
         if (!inRange) return false;
       }

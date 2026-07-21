@@ -76,31 +76,125 @@ export const listing = defineType({
       options: { list: toSanityList(LISTING_LOCATIONS) },
       validation: (rule) => rule.required(),
     }),
+    // --- Unit types (project-level model). A listing is a PROJECT; each entry
+    // here is one unit configuration (1 Bedroom, 3 Bedroom Townhouse, …) with
+    // its own price and size. Cards show a computed starting price + size range
+    // (see the GROQ `startingPrice`/`minSize`/`maxSize` in sanity/lib/queries.ts,
+    // which are derived from this array — not entered by hand). The single-unit
+    // price/bedrooms/bathrooms/sizeSqft fields below are DEPRECATED, kept only so
+    // legacy documents aren't destroyed until they're migrated to unitTypes.
+    defineField({
+      name: "unitTypes",
+      title: "Unit Types",
+      type: "array",
+      group: "specs",
+      description:
+        "One entry per unit configuration in this project (e.g. 1 Bedroom, 3 Bedroom Townhouse). The 'from' price and size range shown on listing cards are computed from these — you don't enter them separately.",
+      validation: (rule) => rule.required().min(1),
+      of: [
+        defineArrayMember({
+          type: "object",
+          name: "unitType",
+          title: "Unit Type",
+          fields: [
+            defineField({
+              name: "label",
+              title: "Label",
+              type: "localeString",
+              description: 'e.g. "1 Bedroom", "3 Bedroom Townhouse", "Studio".',
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "price",
+              title: "Price (AED)",
+              type: "number",
+              validation: (rule) => rule.required().positive(),
+            }),
+            defineField({
+              name: "bedrooms",
+              title: "Bedrooms",
+              type: "number",
+              description: "Use 0 for a studio.",
+              validation: (rule) => rule.min(0).integer(),
+            }),
+            defineField({
+              name: "bathrooms",
+              title: "Bathrooms",
+              type: "number",
+              validation: (rule) => rule.min(0).integer(),
+            }),
+            defineField({
+              name: "minSizeSqft",
+              title: "Min size (sq ft)",
+              type: "number",
+              validation: (rule) => rule.required().positive(),
+            }),
+            defineField({
+              name: "maxSizeSqft",
+              title: "Max size (sq ft)",
+              type: "number",
+              description: "Leave empty if the size is fixed (same as min).",
+              validation: (rule) => rule.positive(),
+            }),
+            defineField({
+              name: "unitsAvailable",
+              title: "Units available",
+              type: "number",
+              validation: (rule) => rule.min(0).integer(),
+            }),
+          ],
+          preview: {
+            select: { label: "label.en", price: "price", beds: "bedrooms" },
+            prepare: ({ label, price, beds }) => ({
+              title:
+                label ?? (beds === 0 ? "Studio" : beds != null ? `${beds} Bedroom` : "Unit type"),
+              subtitle:
+                price != null ? `AED ${price.toLocaleString("en-US")}` : "No price set",
+            }),
+          },
+        }),
+      ],
+    }),
+
+    // --- DEPRECATED single-unit fields (superseded by unitTypes[]). Kept, but
+    // hidden/read-only, so existing documents keep their data during migration;
+    // they vanish from the editor once a doc has no legacy value. Do not remove
+    // until every listing has been migrated (see plan §8).
     defineField({
       name: "price",
-      title: "Price (AED)",
+      title: "Price (AED) — legacy",
       type: "number",
       group: "specs",
-      validation: (rule) => rule.required().positive(),
+      readOnly: true,
+      deprecated: { reason: "Replaced by unitTypes[] — legacy data kept for migration." },
+      hidden: ({ value }) => value === undefined,
     }),
     defineField({
       name: "bedrooms",
-      title: "Bedrooms",
+      title: "Bedrooms — legacy",
       type: "number",
       group: "specs",
+      readOnly: true,
+      deprecated: { reason: "Replaced by unitTypes[] — legacy data kept for migration." },
+      hidden: ({ value }) => value === undefined,
     }),
     defineField({
       name: "bathrooms",
-      title: "Bathrooms",
+      title: "Bathrooms — legacy",
       type: "number",
       group: "specs",
+      readOnly: true,
+      deprecated: { reason: "Replaced by unitTypes[] — legacy data kept for migration." },
+      hidden: ({ value }) => value === undefined,
     }),
     defineField({
       name: "sizeSqft",
-      title: "Living Space (sq ft)",
+      title: "Living Space (sq ft) — legacy",
       type: "number",
       group: "specs",
-      description: "Interior living space in square feet — shown as 'Living Space' in the Property Info table.",
+      readOnly: true,
+      deprecated: { reason: "Replaced by unitTypes[] — legacy data kept for migration." },
+      hidden: ({ value }) => value === undefined,
     }),
     // --- Fields added for the single Property Listing page's "Property Info"
     // table + video block (node 25:33). Flag to the client before locking:

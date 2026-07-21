@@ -12,6 +12,7 @@ import {
 } from "@/sanity/lib/queries";
 import { whatsappLink } from "@/lib/site";
 import { collectionListingToCardData } from "@/lib/property-card-data";
+import { formatRange } from "@/lib/listing-format";
 import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -110,8 +111,9 @@ export default async function PropertyPage({
   const t = dict.propertyDetail;
   const locationLabel = localeLocation(dict, listing.location);
   const fullLocation = `${locationLabel}, ${dict.collection.dubai}`;
-  const priceDisplay = `AED ${listing.price.toLocaleString("en-US")}`;
+  const startingPriceDisplay = `AED ${listing.startingPrice.toLocaleString("en-US")}`;
   const dash = t.notProvided;
+  const unitTypes = listing.unitTypes ?? [];
 
   // Gallery — real CMS media if present, else the brand placeholder set so the
   // carousel is demonstrable until images are uploaded.
@@ -126,30 +128,17 @@ export default async function PropertyPage({
           alt: `${listing.name} — ${t.photo} ${i + 1}`,
         }));
 
-  // Property Info rows (node 25:33). Every value binds to a CMS field; missing
-  // values show a dash rather than dropping the row, keeping the table stable.
+  // Project Info rows (node 25:33) — now project-LEVEL only. Per-unit price /
+  // beds / baths / size moved into the Unit Types breakdown below; what remains
+  // here applies to the whole project. Missing values show a dash rather than
+  // dropping the row, keeping the table stable.
   const infoRows: { label: string; value: string }[] = [
-    { label: t.info.price, value: priceDisplay },
+    { label: t.info.price, value: startingPriceDisplay },
     {
       label: t.info.completionYear,
       value: listing.completionYear != null ? String(listing.completionYear) : dash,
     },
-    {
-      label: t.info.livingSpace,
-      value:
-        listing.sizeSqft != null
-          ? `${listing.sizeSqft.toLocaleString("en-US")} ${t.sqft}`
-          : dash,
-    },
     { label: t.info.floors, value: listing.floors != null ? String(listing.floors) : dash },
-    {
-      label: t.info.bedrooms,
-      value: listing.bedrooms != null ? String(listing.bedrooms) : dash,
-    },
-    {
-      label: t.info.bathrooms,
-      value: listing.bathrooms != null ? String(listing.bathrooms) : dash,
-    },
   ];
 
   const amenities = listing.amenities ?? [];
@@ -197,6 +186,17 @@ export default async function PropertyPage({
                   {fullLocation}
                 </span>
               </p>
+              {/* Starting-from headline — the project's lowest unit price. The
+                  "Starting from" label is intentionally smaller/regular against
+                  the bold price, matching the card prefix treatment. */}
+              <p className="flex flex-wrap items-baseline gap-x-[8px] gap-y-[2px]">
+                <span className="text-[15px] font-normal leading-[1.4] text-[#5f5f5f]">
+                  {t.startingFrom}
+                </span>
+                <span className="text-[30px] font-semibold leading-[1.1] tracking-[-0.6px] text-navy">
+                  {startingPriceDisplay}
+                </span>
+              </p>
               {listing.description && (
                 <p className="max-w-[62ch] text-body text-charcoal/85">
                   {listing.description}
@@ -227,6 +227,67 @@ export default async function PropertyPage({
                 ))}
               </dl>
             </section>
+
+            {/* Unit Types — the per-configuration breakdown (1BR / 3BR Townhouse
+                / …) that replaces the old single price/beds/size. Scrolls
+                horizontally on narrow screens rather than squashing; logical
+                (start/end) spacing so it mirrors correctly under RTL. */}
+            {unitTypes.length > 0 && (
+              <section
+                aria-labelledby="unit-types-heading"
+                className="flex flex-col gap-[20px]"
+              >
+                <h2 id="unit-types-heading" className="text-h3 text-navy">
+                  {t.unitTypesHeading}
+                </h2>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[560px] border-collapse">
+                    <thead>
+                      <tr className="border-b border-[#e5e5e5] text-[12.5px] font-medium uppercase tracking-[0.08em] text-[#5f5f5f]">
+                        <th className="py-[12px] pe-[16px] text-start font-medium">{t.unit.label}</th>
+                        <th className="px-[16px] py-[12px] text-start font-medium">{t.unit.beds}</th>
+                        <th className="px-[16px] py-[12px] text-start font-medium">{t.unit.baths}</th>
+                        <th className="px-[16px] py-[12px] text-start font-medium">{t.unit.size}</th>
+                        <th className="px-[16px] py-[12px] text-start font-medium">{t.unit.price}</th>
+                        <th className="py-[12px] ps-[16px] text-start font-medium">{t.unit.units}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {unitTypes.map((u, i) => {
+                        const size = formatRange(u.minSizeSqft, u.maxSizeSqft);
+                        return (
+                          <tr
+                            key={`${u.label}-${i}`}
+                            className="border-b border-[#e5e5e5] text-[15px] leading-[1.4] text-navy"
+                          >
+                            <td className="py-[14px] pe-[16px] font-medium">{u.label}</td>
+                            <td className="px-[16px] py-[14px]">
+                              {u.bedrooms == null
+                                ? dash
+                                : u.bedrooms === 0
+                                  ? t.studio
+                                  : String(u.bedrooms)}
+                            </td>
+                            <td className="px-[16px] py-[14px]">
+                              {u.bathrooms != null ? String(u.bathrooms) : dash}
+                            </td>
+                            <td className="whitespace-nowrap px-[16px] py-[14px]">
+                              {size ? `${size} ${t.sqft}` : dash}
+                            </td>
+                            <td className="whitespace-nowrap px-[16px] py-[14px] font-semibold">
+                              AED {u.price.toLocaleString("en-US")}
+                            </td>
+                            <td className="py-[14px] ps-[16px]">
+                              {u.unitsAvailable != null ? String(u.unitsAvailable) : dash}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
 
             {/* Features & Amenities (Figma node 142:1975) — only the amenities
                 selected for THIS property (a per-property multi-select of the
