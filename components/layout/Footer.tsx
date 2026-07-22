@@ -184,16 +184,13 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
               <FooterColumn heading={t.socials}>
                 {socials.map((s) => (
-                  <li key={s.name}>
-                    <a
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[16px] font-medium leading-[24.8px] tracking-[-0.32px] text-[#5f5f5f] transition-colors duration-150 hover:text-navy"
-                    >
-                      {s.name}
-                    </a>
-                  </li>
+                  <InfoRow
+                    key={s.name}
+                    icon={socialIcons[s.name]}
+                    href={s.href}
+                    label={s.name}
+                    external
+                  />
                 ))}
               </FooterColumn>
 
@@ -241,6 +238,7 @@ function InfoRow({
   href,
   label,
   forceLtr,
+  external,
 }: {
   icon: React.ReactNode;
   href?: string;
@@ -248,6 +246,8 @@ function InfoRow({
   /** Phone/email-style values whose character order must never reverse,
    *  regardless of the surrounding text direction. */
   forceLtr?: boolean;
+  /** Open the link in a new tab (social profiles), with safe rel. */
+  external?: boolean;
 }) {
   const body = (
     <span className="flex items-center gap-[6px]">
@@ -269,7 +269,11 @@ function InfoRow({
   return (
     <li>
       {href ? (
-        <a href={href} className="group inline-block transition-opacity duration-150 hover:opacity-80">
+        <a
+          href={href}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          className="group inline-block transition-opacity duration-150 hover:opacity-80"
+        >
           {body}
         </a>
       ) : (
@@ -278,6 +282,14 @@ function InfoRow({
     </li>
   );
 }
+
+/* Social glyphs, keyed by the `socials` name so the column stays in sync with
+   lib/site.ts. Same 12×12 / currentColor treatment as the contact icons below,
+   so both footer columns render identically inside InfoRow's grey icon box. */
+const socialIcons: Record<string, React.ReactNode> = {
+  Instagram: <InstagramIcon />,
+  LinkedIn: <LinkedInIcon />,
+};
 
 /* ── Contact icons (node 129:1272, 12×12, navy) ───────────────────────── */
 
@@ -314,6 +326,27 @@ function LocationIcon(props: SVGProps<SVGSVGElement>) {
         d="M6 0C3.51487 0 1.5 2.01487 1.5 4.5C1.5 5.47855 1.82082 6.3765 2.35407 7.11187C2.36363 7.1295 2.36512 7.14919 2.376 7.16607L5.376 11.6661C5.47944 11.8211 5.63686 11.932 5.81762 11.9773C5.99837 12.0226 6.18952 11.999 6.35383 11.9111C6.46268 11.8529 6.55548 11.7687 6.624 11.6661L9.624 7.16607C9.63505 7.14919 9.63637 7.1295 9.64593 7.11187C10.1792 6.3765 10.5 5.47855 10.5 4.5C10.5 2.01487 8.48512 0 6 0ZM6 6C5.60218 5.99999 5.22065 5.84195 4.93935 5.56065C4.65805 5.27935 4.50001 4.89782 4.5 4.5C4.50001 4.10218 4.65805 3.72066 4.93935 3.43935C5.22065 3.15805 5.60218 3.00001 6 3C6.39782 3.00001 6.77935 3.15805 7.06065 3.43935C7.34195 3.72066 7.49999 4.10218 7.5 4.5C7.49999 4.89782 7.34195 5.27935 7.06065 5.56065C6.77935 5.84195 6.39782 5.99999 6 6Z"
         fill="currentColor"
       />
+    </svg>
+  );
+}
+
+/* ── Social icons — hand-authored to match the contact glyphs (no icon
+      library in this project). 24×24 viewBox, rendered at 12×12, currentColor. */
+
+function InstagramIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="currentColor" strokeWidth="2" />
+      <circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="2" />
+      <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
     </svg>
   );
 }
