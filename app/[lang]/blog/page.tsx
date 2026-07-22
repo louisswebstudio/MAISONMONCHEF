@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isLocale, type Locale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import { blogPostsQuery, type BlogPostCard } from "@/sanity/lib/queries";
+import { BLOG_FALLBACK_IMAGE, type BlogPost } from "@/lib/blog-posts";
 import { Container } from "@/components/layout/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { BlogExplorer } from "@/components/blog/BlogExplorer";
@@ -12,9 +16,29 @@ import { BlogExplorer } from "@/components/blog/BlogExplorer";
  * beside a 2-up article grid with Load More. Nav/Footer (and the pre-footer CTA
  * band) come from the locale layout, as on every page.
  *
- * Posts are static placeholders (lib/blog-posts.ts) pending the CMS `post`
- * collection — same staging approach as the Collection page.
+ * Posts are fetched from Sanity (project 1tsx0da7 / production) at request time
+ * with 60s ISR — the same wiring as the Collection page, so a post published in
+ * the Studio appears on the index within a minute without a redeploy. Each CMS
+ * `blogPost` is mapped to the {@link BlogPost} view the explorer filters/sorts.
  */
+
+export const revalidate = 60;
+
+/** Adapt a Sanity blog card into the flat view the client explorer consumes. */
+function toBlogPost(post: BlogPostCard): BlogPost {
+  return {
+    slug: post.slug,
+    category: post.category ?? "",
+    title: post.title,
+    excerpt: post.excerpt ?? "",
+    readMinutes: post.readTime ?? 0,
+    date: post.publishedAt,
+    image: post.coverImage
+      ? urlForImage(post.coverImage).width(860).url()
+      : BLOG_FALLBACK_IMAGE,
+    imageAlt: post.coverImage?.alt ?? "",
+  };
+}
 
 export async function generateMetadata({
   params,
@@ -42,6 +66,19 @@ export default async function BlogPage({
   const dict = await getDictionary(locale);
   const t = dict.blogPage;
 
+  let posts: BlogPost[] = [];
+  try {
+    const cards = await client.fetch<BlogPostCard[]>(
+      blogPostsQuery,
+      { lang: locale },
+      { next: { revalidate } },
+    );
+    posts = cards.map(toBlogPost);
+  } catch {
+    // Render the page with an empty grid rather than 500 if Sanity is down.
+    posts = [];
+  }
+
   return (
     <div className="w-full pb-[78px] pt-[56px]">
       <Container className="flex flex-col gap-[40px]">
@@ -67,7 +104,7 @@ export default async function BlogPage({
           </p>
         </Reveal>
 
-        <BlogExplorer lang={locale} dict={dict} />
+        <BlogExplorer lang={locale} dict={dict} posts={posts} />
       </Container>
     </div>
   );

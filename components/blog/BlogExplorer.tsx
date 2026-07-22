@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 import { ButtonButton } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import {
-  BLOG_POSTS,
   BLOG_CATEGORIES,
   READ_TIME_BUCKETS,
   readTimeBucket,
@@ -24,10 +23,11 @@ import {
  * page's explorer so the two catalogue pages behave identically; the sidebar
  * stacks above the grid below lg (no mobile frame supplied).
  *
- * Filtering, sorting and paging are client-side over the static placeholder set
- * (lib/blog-posts.ts) — trivially cheap, and the real posts will arrive as a
- * small CMS collection. `#eaeaea` (borders) and `#f3f2f0` (input fill) match the
- * Collection filter panel; the card is the premium `bg-paper` treatment.
+ * Posts are the real CMS set, fetched from Sanity by the parent page and passed
+ * in via `posts`; filtering, sorting and paging stay client-side over that
+ * array (trivially cheap for a small collection). `#eaeaea` (borders) and
+ * `#f3f2f0` (input fill) match the Collection filter panel; the card is the
+ * premium `bg-paper` treatment.
  */
 
 const PAGE_SIZE = 6;
@@ -38,9 +38,11 @@ type SortOrder = "latest" | "oldest";
 export function BlogExplorer({
   lang,
   dict,
+  posts,
 }: {
   lang: Locale;
   dict: Dictionary;
+  posts: BlogPost[];
 }) {
   const t = dict.blogPage;
   const [filters, setFilters] = useState<Filters>({ categories: [], readTimes: [] });
@@ -50,7 +52,7 @@ export function BlogExplorer({
   const hasFilters = filters.categories.length > 0 || filters.readTimes.length > 0;
 
   const results = useMemo(() => {
-    const filtered = BLOG_POSTS.filter((p) => {
+    const filtered = posts.filter((p) => {
       if (filters.categories.length > 0 && !filters.categories.includes(p.category))
         return false;
       if (
@@ -64,7 +66,7 @@ export function BlogExplorer({
       const diff = +new Date(b.date) - +new Date(a.date);
       return sort === "latest" ? diff : -diff;
     });
-  }, [filters, sort]);
+  }, [posts, filters, sort]);
 
   const update = (patch: Partial<Filters>) => {
     setFilters((f) => ({ ...f, ...patch }));
@@ -227,12 +229,9 @@ function CheckboxGroup({
  * hairline divider, then read-time + published-date meta. Premium pass: warm
  * `bg-paper` fill, `font-display` title, and a hover lift + slow image zoom.
  *
- * The whole card links to the single article template at /blog/<slug>. That
- * route resolves its content from the Sanity `blogPost` document with the
- * MATCHING slug — this index is still the static placeholder set, so the two
- * are kept in sync by hand until the index itself moves to the CMS: every slug
- * in lib/blog-posts.ts has a counterpart in sanity/seed/blog-posts.ndjson. A
- * slug present here but not in the dataset renders the 404, by design.
+ * The whole card links to the single article template at /blog/<slug>, which
+ * resolves its content from the same Sanity `blogPost` document — index and
+ * article are now the one CMS source, so slugs can never drift.
  */
 function BlogCard({
   post,
@@ -263,15 +262,19 @@ function BlogCard({
       <div className="relative aspect-[422/279] w-full overflow-hidden">
         <Image
           src={post.image}
-          alt={post.title}
+          alt={post.imageAlt || post.title}
           fill
           sizes="(min-width: 1024px) 430px, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
         />
-        {/* Category chip */}
-        <span className="absolute bottom-[12px] left-[12px] inline-flex items-center bg-warm-taupe px-[12px] py-[5px] text-[12px] font-semibold uppercase leading-[16px] tracking-[0.1em] text-white shadow-[0px_6px_16px_rgba(0,0,0,0.14)]">
-          {t.categories[post.category]}
-        </span>
+        {/* Category chip. `category` is a free CMS string: show the translated
+            label when it maps to a taxonomy key, otherwise the raw value — and
+            nothing at all when the post has no category. */}
+        {post.category && (
+          <span className="absolute bottom-[12px] left-[12px] inline-flex items-center bg-warm-taupe px-[12px] py-[5px] text-[12px] font-semibold uppercase leading-[16px] tracking-[0.1em] text-white shadow-[0px_6px_16px_rgba(0,0,0,0.14)]">
+            {categoryLabel(post.category, t.categories as Record<string, string>)}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col gap-[10px] p-[10px]">
@@ -298,6 +301,15 @@ function BlogCard({
       </div>
     </Link>
   );
+}
+
+/**
+ * Translate a CMS category when it maps to a taxonomy key, else show it as
+ * authored — same convention as the article page's `categoryLabel`, so a
+ * category that isn't one of the fixed four never renders a blank chip.
+ */
+function categoryLabel(category: string, labels: Record<string, string>): string {
+  return labels[category] ?? category;
 }
 
 /* ── Icons ─────────────────────────────────────────────────────────────── */

@@ -4,7 +4,10 @@ import { Container } from "@/components/layout/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { BlogCard } from "@/components/ui/BlogCard";
-import { BLOG_POSTS } from "@/lib/blog-posts";
+import { client } from "@/sanity/lib/client";
+import { urlForImage } from "@/sanity/lib/image";
+import { blogPostsQuery, type BlogPostCard } from "@/sanity/lib/queries";
+import { BLOG_FALLBACK_IMAGE } from "@/lib/blog-posts";
 
 /**
  * "Blog" — cloned from Figma (file r2XTjIJ5uaZ0VFCG2kfCdn, node 138:3440
@@ -13,28 +16,40 @@ import { BLOG_POSTS } from "@/lib/blog-posts";
  * (square photo, gold category chip, title, hairline divider, read-time and
  * date row).
  *
- * Figma's three cards were the same placeholder article repeated with no
- * slug to link to; now that real posts exist (lib/blog-posts.ts, mirrored in
- * the Sanity seed), this shows the 3 latest and each card links straight to
- * its own article at /blog/<slug> — same as the article page's own Related
- * Blogs row (app/[lang]/blog/[slug]/page.tsx). Cards reflow 1→2→3 columns (no
- * mobile frame supplied). Figma's chip gold #8a795b is exactly the warm-taupe
- * token; the divider SVG is a 1px #ededed rule, reproduced as a border.
- * `#f7f7f7` (card frame) has no design token.
+ * Figma's three cards were the same placeholder article repeated; now the three
+ * latest posts come from Sanity (`blogPostsQuery`, 60s ISR — same wiring as the
+ * /blog index and the Collection page), each linking to its own article at
+ * /blog/<slug>. When Sanity is unreachable the section renders nothing rather
+ * than stale placeholders. Cards reflow 1→2→3 columns (no mobile frame
+ * supplied). Figma's chip gold #8a795b is exactly the warm-taupe token; the
+ * divider SVG is a 1px #ededed rule, reproduced as a border. `#f7f7f7` (card
+ * frame) has no design token.
  *
  * NOTE: this section's heading is 48px MEDIUM / -1.44px in Figma — a step
  * outside the 46px semibold / -1.84px used by the other home sections; kept
  * as authored.
  */
 
-export function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
+export async function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const t = dict.blog;
   const base = `/${lang}`;
   const categories = dict.blogPage.categories as Record<string, string>;
 
-  const latest = [...BLOG_POSTS]
-    .sort((a, b) => +new Date(b.date) - +new Date(a.date))
-    .slice(0, 3);
+  let latest: BlogPostCard[] = [];
+  try {
+    const cards = await client.fetch<BlogPostCard[]>(
+      blogPostsQuery,
+      { lang },
+      { next: { revalidate: 60 } },
+    );
+    latest = cards.slice(0, 3);
+  } catch {
+    latest = [];
+  }
+
+  // Nothing published yet (or Sanity unreachable) — omit the section entirely
+  // rather than show an empty grid on the home page.
+  if (latest.length === 0) return null;
 
   return (
     <section className="w-full py-section">
@@ -70,15 +85,20 @@ export function Blog({ lang, dict }: { lang: Locale; dict: Dictionary }) {
         {/* Card grid */}
         <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2 lg:grid-cols-3">
           {latest.map((post, i) => (
-            <Reveal key={post.slug} delay={(i % 3) * 110} className="h-full">
+            <Reveal key={post._id} delay={(i % 3) * 110} className="h-full">
               <BlogCard
                 data={{
                   href: `${base}/blog/${post.slug}`,
-                  image: post.image,
-                  category: categories[post.category] ?? post.category,
+                  image: post.coverImage
+                    ? urlForImage(post.coverImage).width(768).url()
+                    : BLOG_FALLBACK_IMAGE,
+                  imageAlt: post.coverImage?.alt ?? "",
+                  category: post.category
+                    ? categories[post.category] ?? post.category
+                    : undefined,
                   title: post.title,
-                  minutes: post.readMinutes,
-                  date: formatDate(post.date, lang),
+                  minutes: post.readTime,
+                  date: formatDate(post.publishedAt, lang),
                 }}
                 minutesLabel={t.minutes}
               />

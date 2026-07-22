@@ -169,6 +169,29 @@ export const listingBySlugQuery = groq`
   }
 `;
 
+/**
+ * Every published blog post for the /blog index and the homepage "Journal" row,
+ * newest first — the LIST counterpart to {@link blogPostBySlugQuery}. Returns
+ * the shared {@link BlogPostCard} shape (localized title/excerpt with an EN
+ * fallback, cover image with localized alt) that both the index explorer and
+ * the shared BlogCard consume.
+ */
+export const blogPostsQuery = groq`
+  *[_type == "blogPost" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
+    _id,
+    "title": coalesce(title[$lang], title.en),
+    "slug": slug.current,
+    category,
+    "excerpt": coalesce(excerpt[$lang], excerpt.en),
+    "coverImage": coverImage{
+      ...,
+      "alt": coalesce(alt[$lang], alt.en)
+    },
+    readTime,
+    publishedAt
+  }
+`;
+
 /** All blog post slugs — for `generateStaticParams` on the article route. */
 export const blogPostSlugsQuery = groq`
   *[_type == "blogPost" && defined(slug.current) && !(_id in path("drafts.**"))].slug.current
