@@ -292,7 +292,9 @@ export default async function PropertyPage({
                 locked 12-item taxonomy) are rendered, so the count varies 1–12.
                 Each feature stacks vertically: gold icon tile → 20px → title +
                 description; 32px between feature cells. */}
-            {amenities.length > 0 && (
+            {/* Temporarily hidden — remove the `false &&` below to bring the
+                Features & Amenities section back. */}
+            {false && amenities.length > 0 && (
               <section
                 aria-labelledby="amenities-heading"
                 className="flex flex-col gap-[28px]"
