@@ -1,5 +1,3 @@
-import { LISTING_LOCATIONS } from "./listings";
-
 /**
  * "Homes Selected for you" cards — cloned from Figma (file r2XTjIJ5uaZ0VFCG2kfCdn,
  * node 138:1831 "Listing Section"). See components/sections/FeaturedListings.tsx.
@@ -11,9 +9,12 @@ import { LISTING_LOCATIONS } from "./listings";
  * documents; this file just reproduces the six-card layout faithfully until
  * that query is wired in.
  *
- * The six locations are sourced from LISTING_LOCATIONS (lib/listings.ts) — the
- * confirmed real Dubai areas — so this section can never drift from the
- * Collection filter taxonomy or reintroduce US placeholder locations.
+ * The six location labels below are real areas from the `area` taxonomy now
+ * held in Sanity (see sanity/seed/generate-areas.mjs). They are literals rather
+ * than a fetch because this whole file is throwaway mock layout data — when the
+ * section is wired to real `listing` documents it goes away entirely, labels
+ * and all. What matters is that they are real Dubai areas and never US
+ * placeholder locations.
  */
 export type FeaturedListing = {
   id: string;
@@ -42,9 +43,18 @@ const PLACEHOLDER = {
   image: "/brand/listings/property-placeholder.jpg",
 } as const;
 
-export const FEATURED_LISTINGS: FeaturedListing[] = LISTING_LOCATIONS.map(
+const PLACEHOLDER_AREAS = [
+  { slug: "downtown-dubai", label: "Downtown Dubai" },
+  { slug: "business-bay", label: "Business Bay" },
+  { slug: "dubai-marina", label: "Dubai Marina" },
+  { slug: "palm-jumeirah", label: "Palm Jumeirah" },
+  { slug: "dubai-hills-estate", label: "Dubai Hills Estate" },
+  { slug: "arjan", label: "Arjan" },
+] as const;
+
+export const FEATURED_LISTINGS: FeaturedListing[] = PLACEHOLDER_AREAS.map(
   (loc) => ({
-    id: loc.value,
+    id: loc.slug,
     location: loc.label,
     ...PLACEHOLDER,
   }),

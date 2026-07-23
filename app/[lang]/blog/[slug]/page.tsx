@@ -63,11 +63,6 @@ export async function generateStaticParams() {
 }
 
 async function getPost(slug: string, lang: Locale) {
-  // TEMP-VERIFY-STUB
-  const stub = (await import("../../../../.__seed_stub.json")).default;
-  const hit = stub.find((p) => p.slug === slug);
-  if (hit) return hit as unknown as BlogPostDetail;
-  // END TEMP-VERIFY-STUB
   try {
     return await client.fetch<BlogPostDetail | null>(blogPostBySlugQuery, {
       slug,

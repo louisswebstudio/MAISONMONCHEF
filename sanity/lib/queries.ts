@@ -16,6 +16,24 @@ import { groq } from "next-sanity";
  * `.{ "v": … }.v` projection on `maxSize` takes each unit's max (or its min when
  * fixed) before `math::max`, so a project's high end is never understated.
  */
+/**
+ * `location` is a REFERENCE into the `area` taxonomy, so every listing query
+ * dereferences it to the three things the UI actually needs: the display name
+ * ("Palm Jumeirah"), the stable `locationSlug` the Collection filter checks
+ * against, and the owning region — which supplies the ", Dubai" suffix on cards
+ * that used to be a hardcoded dictionary string, and is now correct for Abu
+ * Dhabi and Northern Emirates listings too.
+ *
+ * Area names are proper nouns and are not localized (see the `area` schema), so
+ * there is no $lang coalesce here.
+ */
+const LOCATION_FIELDS = `
+    "location": location->name,
+    "locationSlug": location->slug.current,
+    "region": location->region->name,
+    "regionSlug": location->region->slug.current
+`;
+
 const CARD_COMPUTED_FIELDS = `
     "startingPrice": coalesce(math::min(unitTypes[].price), price),
     "minSize": coalesce(math::min(unitTypes[].minSizeSqft), sizeSqft),
@@ -33,7 +51,7 @@ export const collectionListingsQuery = groq`
     "description": coalesce(pt::text(description[$lang]), pt::text(description.en)),
     status,
     category,
-    location,
+    ${LOCATION_FIELDS},
     ${CARD_COMPUTED_FIELDS},
     "image": gallery[0],
   }
@@ -52,7 +70,13 @@ export type CollectionListing = {
   description?: string;
   status: string;
   category?: string;
+  /** Area display name, e.g. "Palm Jumeirah". */
   location: string;
+  /** Stable area slug — what the Collection location filter matches on. */
+  locationSlug: string;
+  /** Owning region's display name, e.g. "Dubai". */
+  region: string;
+  regionSlug: string;
   startingPrice: number;
   minSize?: number;
   maxSize?: number;
@@ -79,7 +103,7 @@ export const featuredCarouselQuery = groq`
     _id,
     "name": coalesce(name[$lang], name.en),
     "slug": slug.current,
-    location,
+    ${LOCATION_FIELDS},
     ${CARD_COMPUTED_FIELDS},
     floors,
     "image": gallery[0],
@@ -92,6 +116,9 @@ export type FeaturedCarouselListing = {
   name: string;
   slug: string;
   location: string;
+  locationSlug: string;
+  region: string;
+  regionSlug: string;
   startingPrice: number;
   minSize?: number;
   maxSize?: number;
@@ -99,6 +126,41 @@ export type FeaturedCarouselListing = {
   maxBeds?: number;
   floors?: number;
   image?: import("sanity").Image | null;
+};
+
+/**
+ * The location taxonomy for the Collection filter: every region with its areas
+ * nested, both in `order` (the client-supplied sequence — Dubai first, and
+ * Downtown Dubai before Business Bay — NOT alphabetical).
+ *
+ * Fetched rather than hardcoded so an area added in the Studio appears in the
+ * filter within the page's 60s ISR window, with no deploy. Regions with no
+ * areas are kept: an empty section is a visible signal that the taxonomy needs
+ * content, and the filter renders it as a disabled header rather than lying.
+ */
+export const areaFilterQuery = groq`
+  *[_type == "areaRegion" && !(_id in path("drafts.**"))] | order(order asc) {
+    _id,
+    name,
+    "slug": slug.current,
+    "areas": *[
+      _type == "area" &&
+      region._ref == ^._id &&
+      !(_id in path("drafts.**"))
+    ] | order(order asc) {
+      _id,
+      name,
+      "slug": slug.current
+    }
+  }
+`;
+
+/** Shape returned by {@link areaFilterQuery} — one collapsible filter section. */
+export type AreaRegionGroup = {
+  _id: string;
+  name: string;
+  slug: string;
+  areas: { _id: string; name: string; slug: string }[];
 };
 
 /** All listing slugs — for `generateStaticParams` on the detail route. */
@@ -122,7 +184,7 @@ export const listingBySlugQuery = groq`
     "description": coalesce(pt::text(description[$lang]), pt::text(description.en)),
     status,
     category,
-    location,
+    ${LOCATION_FIELDS},
     ${CARD_COMPUTED_FIELDS},
     "unitTypes": unitTypes[]{
       "label": coalesce(label[$lang], label.en),
@@ -155,17 +217,40 @@ export const listingBySlugQuery = groq`
       _type == "listing" &&
       slug.current != $slug &&
       !(_id in path("drafts.**"))
-    ] | order(select(location == ^.location => 0, 1) asc, _createdAt desc) [0...3]{
+    ] | order(select(location._ref == ^.location._ref => 0, 1) asc, _createdAt desc) [0...3]{
       _id,
       "name": coalesce(name[$lang], name.en),
       "slug": slug.current,
       "description": coalesce(pt::text(description[$lang]), pt::text(description.en)),
       status,
       category,
-      location,
+      ${LOCATION_FIELDS},
       ${CARD_COMPUTED_FIELDS},
       "image": gallery[0]
     }
+  }
+`;
+
+/**
+ * Every published blog post for the /blog index and the homepage "Journal" row,
+ * newest first — the LIST counterpart to {@link blogPostBySlugQuery}. Returns
+ * the shared {@link BlogPostCard} shape (localized title/excerpt with an EN
+ * fallback, cover image with localized alt) that both the index explorer and
+ * the shared BlogCard consume.
+ */
+export const blogPostsQuery = groq`
+  *[_type == "blogPost" && !(_id in path("drafts.**"))] | order(publishedAt desc) {
+    _id,
+    "title": coalesce(title[$lang], title.en),
+    "slug": slug.current,
+    category,
+    "excerpt": coalesce(excerpt[$lang], excerpt.en),
+    "coverImage": coverImage{
+      ...,
+      "alt": coalesce(alt[$lang], alt.en)
+    },
+    readTime,
+    publishedAt
   }
 `;
 
@@ -270,6 +355,9 @@ export type ListingDetail = {
   status: string;
   category?: string;
   location: string;
+  locationSlug: string;
+  region: string;
+  regionSlug: string;
   startingPrice: number;
   minSize?: number;
   maxSize?: number;

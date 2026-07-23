@@ -59,9 +59,11 @@ export function listingToFeaturedProperty(
   lang: Locale,
   dict: Dictionary,
 ): FeaturedProperty {
-  const tc = dict.collection;
-  const locationLabel =
-    tc.locations[listing.location as keyof typeof tc.locations] ?? listing.location;
+  // Area + region names come from the `area` taxonomy in Sanity (proper nouns,
+  // not translated), and the region replaces the formerly hardcoded ", Dubai".
+  const locationLabel = listing.region
+    ? `${listing.location}, ${listing.region}`
+    : listing.location;
 
   // Project spotlight specs: size and bedroom RANGES across the project's unit
   // types, plus project-level floors. Bathrooms are per-unit (shown in the
@@ -77,7 +79,7 @@ export function listingToFeaturedProperty(
   return {
     id: listing._id,
     title: listing.name,
-    location: `${locationLabel}, ${tc.dubai}`,
+    location: locationLabel,
     price: formatPriceAmount(listing.startingPrice),
     pricePrefix: dict.listings.priceFrom,
     image: listing.image

@@ -93,7 +93,12 @@ export function OurValue({ dict }: { dict: Dictionary }) {
                 alt={t.photoAlt}
                 fill
                 sizes="(min-width: 1024px) 406px, (min-width: 768px) calc(100vw - 200px), calc(100vw - 48px)"
-                className="object-cover"
+                /* The subject's head sits in the top ~quarter of the frame, so a
+                   centred cover-crop drops his face on the shorter mobile/tablet
+                   containers. Anchor the crop to the top to keep the head in
+                   view; at lg the container aspect ≈ the source, so this is
+                   imperceptible there. */
+                className="object-cover object-top"
               />
             </Reveal>
           </div>

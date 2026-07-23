@@ -1,5 +1,5 @@
 import { defineType, defineField, defineArrayMember } from "sanity";
-import { LISTING_STATUSES, LISTING_CATEGORIES, LISTING_LOCATIONS } from "../../../lib/listings";
+import { LISTING_STATUSES, LISTING_CATEGORIES } from "../../../lib/listings";
 
 /** Sanity's `options.list` wants `{value, title}`; the shared taxonomy (also
  * consumed by the future filter UI) uses `{value, label}` — map at this
@@ -67,13 +67,21 @@ export const listing = defineType({
       group: "specs",
       options: { list: toSanityList(LISTING_CATEGORIES) },
     }),
+    // Location is a REFERENCE into the `area` taxonomy (45 UAE areas grouped
+    // under 3 regions), not the old 10-value string enum — so the Collection
+    // filter, the card labels and the CMS share one source of truth and a new
+    // area is a content edit rather than a code change. Legacy string values
+    // were migrated by sanity/seed/migrate-listing-locations.mjs.
     defineField({
       name: "location",
       title: "Location",
-      type: "string",
+      type: "reference",
       group: "specs",
-      description: "Real Dubai areas only — never US placeholder locations.",
-      options: { list: toSanityList(LISTING_LOCATIONS) },
+      to: [{ type: "area" }],
+      description:
+        "Real UAE areas only (Dubai / Abu Dhabi / Northern Emirates) — never US placeholder locations.",
+      // The taxonomy is seeded and published; never offer a draft area.
+      options: { filter: "!(_id in path('drafts.**'))" },
       validation: (rule) => rule.required(),
     }),
     // --- Unit types (project-level model). A listing is a PROJECT; each entry
@@ -308,7 +316,7 @@ export const listing = defineType({
     }),
   ],
   preview: {
-    select: { title: "name.en", subtitle: "location", media: "gallery.0", placeholder: "isPlaceholder" },
+    select: { title: "name.en", subtitle: "location.name", media: "gallery.0", placeholder: "isPlaceholder" },
     prepare: ({ title, subtitle, media, placeholder }) => ({
       title: placeholder ? `⚠ ${title} (placeholder)` : title,
       subtitle,

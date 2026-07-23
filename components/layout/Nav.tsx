@@ -93,21 +93,27 @@ export function Nav({ lang, dict }: { lang: Locale; dict: Dictionary }) {
             </Button>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            className="ms-auto inline-flex h-11 w-11 items-center justify-center lg:hidden"
-            aria-expanded={open}
-            aria-label={open ? dict.nav.close : dict.nav.menu}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="sr-only">{open ? dict.nav.close : dict.nav.menu}</span>
-            <div className="flex flex-col gap-1.5">
-              <span className={cn("block h-px w-6 bg-navy transition-transform", open && "translate-y-[7px] rotate-45")} />
-              <span className={cn("block h-px w-6 bg-navy transition-opacity", open && "opacity-0")} />
-              <span className={cn("block h-px w-6 bg-navy transition-transform", open && "-translate-y-[7px] -rotate-45")} />
-            </div>
-          </button>
+          {/* Mobile cluster — language switcher sits OUTSIDE the menu, next to
+              the toggle, so it stays reachable without opening the menu (mirrors
+              the desktop right cluster, where it sits beside Contact Us). */}
+          <div className="ms-auto flex items-center gap-2 lg:hidden">
+            <LanguageSwitcher current={lang} label={dict.languageSwitcher.label} />
+
+            <button
+              type="button"
+              className="inline-flex h-11 w-11 items-center justify-center"
+              aria-expanded={open}
+              aria-label={open ? dict.nav.close : dict.nav.menu}
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span className="sr-only">{open ? dict.nav.close : dict.nav.menu}</span>
+              <div className="flex flex-col gap-1.5">
+                <span className={cn("block h-px w-6 bg-navy transition-transform", open && "translate-y-[7px] rotate-45")} />
+                <span className={cn("block h-px w-6 bg-navy transition-opacity", open && "opacity-0")} />
+                <span className={cn("block h-px w-6 bg-navy transition-transform", open && "-translate-y-[7px] -rotate-45")} />
+              </div>
+            </button>
+          </div>
         </Container>
       </div>
 
@@ -127,8 +133,9 @@ export function Nav({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 </Link>
               ))}
             </nav>
-            <div className="mt-6 flex items-center justify-between">
-              <LanguageSwitcher current={lang} label={dict.languageSwitcher.label} />
+            {/* Language switcher now lives in the header cluster (always
+                visible); the menu keeps only the Contact CTA. */}
+            <div className="mt-6">
               <Button href={`${base}/contact`} variant="primary" onClick={() => setOpen(false)}>
                 {dict.cta.contact}
               </Button>

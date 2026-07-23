@@ -298,7 +298,10 @@
       "errorName": "Please enter your name.",
       "errorPhone": "Please enter a phone number.",
       "errorConsent": "Please accept the Privacy and Data Protection Policy to continue.",
-      "emailSubject": "Property enquiry from {name}"
+      "errorVerification": "Verification failed. Please try again.",
+      "errorServer": "Something went wrong sending your message. Please try again, or reach us directly by phone or WhatsApp.",
+      "submitting": "Sending…",
+      "successMessage": "Thank you — we've received your enquiry and will be in touch shortly."
     },
     "photoAlt": "A sunlit reception with an arched doorway and a view of the Burj Khalifa, Maison Monchef's Dubai home."
   },
@@ -309,7 +312,6 @@
     "intro": "A curated selection of residences across Dubai. Sales, off-plan, and beyond. Filter by what matters to you.",
     "loadMore": "Load More",
     "empty": "No properties match your filters yet. Adjust the filters, or contact us for off-market opportunities.",
-    "dubai": "Dubai",
     "filters": {
       "status": "Status",
       "statusAll": "All",
@@ -327,14 +329,6 @@
       "penthouse": "Penthouse",
       "villa": "Villa",
       "townhouse": "Townhouse"
-    },
-    "locations": {
-      "business-bay": "Business Bay",
-      "palm-jumeirah": "Palm Jumeirah",
-      "downtown-dubai": "Downtown Dubai",
-      "dubai-marina": "Dubai Marina",
-      "arjan": "Arjan",
-      "dubai-hills": "Dubai Hills"
     }
   },
   "properties": {
