@@ -32,7 +32,6 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
   const links = [
     { href: `${base}/about`, label: dict.nav.about },
-    { href: `${base}/services`, label: dict.nav.services },
     { href: `${base}/collection`, label: t.properties },
     { href: `${base}/blog`, label: dict.nav.blog },
     { href: `${base}/contact`, label: dict.nav.contact },
@@ -134,9 +133,9 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
       {/* ── Footer proper ──────────────────────────────────────────────── */}
       <div className="bg-white pb-[25px] pt-[56px]">
         <Container className="flex flex-col gap-[58px]">
-          <div className="flex flex-col gap-14 lg:flex-row lg:gap-[56px]">
+          <div className="flex flex-col gap-14 xl:flex-row xl:gap-[56px]">
             {/* Brand */}
-            <div className="flex max-w-[350px] flex-col gap-8 lg:w-[320px] lg:max-w-none lg:shrink-0">
+            <div className="flex max-w-[350px] flex-col gap-8 xl:w-[320px] xl:max-w-none xl:shrink-0">
               <Link href={base} aria-label={dict.meta.siteName} className="block">
                 {/* Logo is a square lockup — scale the whole thing into a square
                     box (like the Nav) so the full wordmark shows, rather than
@@ -165,10 +164,22 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </div>
             </div>
 
-            {/* Link columns — fill the remaining grid width (no dead middle gap,
-                no right-edge overflow); the wider "Other info" column now fits
-                the full email on one line. */}
-            <div className="grid grid-cols-2 gap-x-[40px] gap-y-10 sm:grid-cols-[1fr_1fr_1.25fr] sm:gap-x-[32px] lg:flex-1">
+            {/* Link columns. Links/Socials only ever need ~80-115px of content
+                width, but "Other info" must fit the full email address
+                ("bonjour@maisonmonchef.ae") on one line — ~263px of text plus
+                a 34px icon+gap prefix, ~297px total. An even 3-way split
+                (even weighted 1.25fr) can't provide that: measured 142px wide
+                at 1024px viewport and only 231px even at the container's
+                1240px max-width. So the 3-way split is deferred to xl (1280px,
+                where the container is reliably maxed at 1240px and the brand
+                column sits beside a STABLE-width grid — see the xl:flex-row
+                switch above, moved from lg for the same reason) using fixed
+                widths for the short columns so "Other info" always gets
+                whatever's left via 1fr, rather than a fraction that starves it
+                at in-between viewports. Below xl, "Other info" spans the full
+                row (col-span-2) under the 2-column Links/Socials row, which
+                always has ample width. */}
+            <div className="grid grid-cols-2 gap-x-[40px] gap-y-10 xl:grid-cols-[140px_140px_1fr] xl:gap-x-[32px] xl:flex-1">
               <FooterColumn heading={t.links}>
                 {links.map((l) => (
                   <li key={l.href}>
@@ -194,11 +205,13 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
                 ))}
               </FooterColumn>
 
-              <FooterColumn heading={t.other}>
-                <InfoRow icon={<MailIcon />} href={site.emailHref} label={site.email} forceLtr />
-                <InfoRow icon={<PhoneIcon />} href={site.phoneHref} label={site.phoneDisplay} forceLtr />
-                <InfoRow icon={<LocationIcon />} label={t.office} />
-              </FooterColumn>
+              <div className="col-span-2 xl:col-span-1">
+                <FooterColumn heading={t.other}>
+                  <InfoRow icon={<MailIcon />} href={site.emailHref} label={site.email} forceLtr />
+                  <InfoRow icon={<PhoneIcon />} href={site.phoneHref} label={site.phoneDisplay} forceLtr />
+                  <InfoRow icon={<LocationIcon />} label={t.office} />
+                </FooterColumn>
+              </div>
             </div>
           </div>
 
@@ -257,8 +270,13 @@ function InfoRow({
       <span
         dir={forceLtr ? "ltr" : undefined}
         className={cn(
-          "min-w-0 text-[16px] font-medium leading-[24.8px] tracking-[-0.32px] text-[#5f5f5f] [overflow-wrap:anywhere]",
-          forceLtr && "text-start",
+          "min-w-0 font-medium leading-[24.8px] tracking-[-0.32px] text-[#5f5f5f] [overflow-wrap:anywhere]",
+          // forceLtr = email/phone: never wrap. A touch smaller below sm as a
+          // safety margin for the narrowest phones (~320px), where even the
+          // full-width row is a little tight for the email address. (Font
+          // size is conditional on the same branch as the base size, to
+          // avoid two conflicting text-[..] utilities both being present.)
+          forceLtr ? "whitespace-nowrap text-start text-[14px] sm:text-[16px]" : "text-[16px]",
         )}
       >
         {label}
