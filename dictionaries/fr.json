@@ -32,6 +32,7 @@
     "socials": "Réseaux",
     "other": "Autres infos :",
     "office": "Dubaï, Émirats arabes unis",
+    "privacy": "Politique de confidentialité",
     "rights": "Tous droits réservés."
   },
   "languageSwitcher": {
@@ -393,5 +394,100 @@
     "whatsappMessage": "Bonjour Maison Monchef, je souhaite réserver une visite de {property}.",
     "relatedHeading": "Vous pourriez aussi considérer",
     "viewAll": "Voir tout"
+  },
+  "privacy": {
+    "metaTitle": "Politique de confidentialité",
+    "metaDescription": "Comment Maison Monchef Real Estate collecte, utilise, protège et partage vos informations personnelles.",
+    "eyebrow": "Mentions légales",
+    "heading": "Politique de confidentialité",
+    "updatedLabel": "Dernière mise à jour",
+    "updated": "23 juillet 2026",
+    "intro": "Maison Monchef Real Estate L.L.C. (« Maison Monchef », « nous » ou « notre ») s'engage à protéger votre vie privée. Cette politique explique quelles informations personnelles nous collectons lorsque vous interagissez avec nous ou utilisez ce site, comment nous les utilisons et les droits dont vous disposez à leur égard. Elle vise à refléter nos obligations au titre des lois applicables sur la protection des données des Émirats arabes unis.",
+    "sections": [
+      {
+        "title": "Informations que nous collectons",
+        "body": ["Nous ne collectons que les informations nécessaires pour répondre à votre demande et fournir nos services de conseil, à savoir :"],
+        "items": [
+          "Les coordonnées que vous fournissez via notre formulaire de contact ou en nous écrivant directement, telles que votre nom, votre numéro de téléphone et le contenu de votre message.",
+          "Les détails du bien ou du service qui vous intéresse, afin de vous conseiller au mieux.",
+          "Des informations techniques limitées, telles que votre adresse IP, collectées automatiquement pour aider à protéger nos formulaires contre les abus automatisés."
+        ]
+      },
+      {
+        "title": "Comment nous utilisons vos informations",
+        "body": ["Nous utilisons les informations que vous fournissez pour :"],
+        "items": [
+          "Répondre à vos demandes et organiser des visites de biens ou des consultations.",
+          "Fournir, personnaliser et améliorer nos services de conseil immobilier.",
+          "Conserver une trace de nos échanges et respecter nos obligations légales et réglementaires.",
+          "Protéger notre site et nos formulaires contre la fraude, le spam et les usages abusifs."
+        ]
+      },
+      {
+        "title": "Base légale et consentement",
+        "body": ["Nous traitons vos informations personnelles sur la base du consentement que vous nous donnez lorsque vous nous contactez, et lorsque cela est nécessaire pour prendre des mesures à votre demande avant la conclusion d'un accord, pour respecter nos obligations légales, ou dans notre intérêt légitime à exploiter et sécuriser notre activité. Vous pouvez retirer votre consentement à tout moment en nous contactant aux coordonnées ci-dessous."],
+        "items": []
+      },
+      {
+        "title": "Comment nous partageons vos informations",
+        "body": ["Nous ne vendons jamais vos informations personnelles. Nous ne les partageons qu'avec des prestataires de confiance qui nous aident à exploiter notre activité, et uniquement dans la mesure nécessaire. Il s'agit notamment de :"],
+        "items": [
+          "Des prestataires de messagerie et de courriel qui transmettent votre demande à notre équipe.",
+          "Notre plateforme sécurisée de contenu et d'archivage, où les demandes sont conservées.",
+          "Des prestataires de sécurité qui protègent nos formulaires contre les abus automatisés.",
+          "Des conseillers professionnels, régulateurs ou autorités lorsque la loi l'exige."
+        ]
+      },
+      {
+        "title": "Cookies et analyse d'audience",
+        "body": ["Ce site utilise uniquement les cookies et technologies similaires nécessaires à son fonctionnement et à sa sécurité. Nous n'utilisons pas de cookies pour établir des profils publicitaires vous concernant. Vous pouvez contrôler ou supprimer les cookies via les paramètres de votre navigateur."],
+        "items": []
+      },
+      {
+        "title": "Conservation des données",
+        "body": ["Nous ne conservons vos informations personnelles que le temps nécessaire pour répondre à votre demande, fournir nos services et respecter nos obligations légales et réglementaires. Lorsqu'elles ne sont plus nécessaires, nous les supprimons ou les anonymisons de manière sécurisée."],
+        "items": []
+      },
+      {
+        "title": "Sécurité des données",
+        "body": ["Nous appliquons des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre la perte, l'usage abusif et l'accès non autorisé. Bien qu'aucune méthode de transmission sur Internet ne soit totalement sûre, nous nous efforçons de protéger vos informations à chaque étape."],
+        "items": []
+      },
+      {
+        "title": "Transferts internationaux",
+        "body": ["Certains de nos prestataires peuvent traiter vos informations en dehors des Émirats arabes unis. Le cas échéant, nous prenons des mesures pour que vos informations continuent d'être protégées selon un niveau conforme à cette politique et à la loi applicable."],
+        "items": []
+      },
+      {
+        "title": "Vos droits",
+        "body": ["Sous réserve de la loi applicable, vous avez le droit de :"],
+        "items": [
+          "Demander l'accès aux informations personnelles que nous détenons à votre sujet.",
+          "Nous demander de corriger des informations inexactes ou incomplètes.",
+          "Nous demander de supprimer vos informations lorsqu'aucune raison légale ne justifie leur conservation.",
+          "Retirer votre consentement ou vous opposer à l'utilisation de vos informations."
+        ]
+      },
+      {
+        "title": "Liens vers des tiers",
+        "body": ["Notre site peut renvoyer vers des sites tiers, tels que nos profils de réseaux sociaux ou nos services de messagerie. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites et vous invitons à consulter leurs propres politiques de confidentialité."],
+        "items": []
+      },
+      {
+        "title": "Confidentialité des enfants",
+        "body": ["Nos services sont destinés aux adultes. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants. Si vous pensez qu'un enfant nous a communiqué des informations personnelles, veuillez nous contacter afin que nous puissions les supprimer."],
+        "items": []
+      },
+      {
+        "title": "Modifications de cette politique",
+        "body": ["Nous pouvons mettre à jour cette politique de temps à autre pour refléter les évolutions de nos pratiques ou des exigences légales. Toute mise à jour sera publiée sur cette page avec une date de « Dernière mise à jour » révisée."],
+        "items": []
+      },
+      {
+        "title": "Nous contacter",
+        "body": ["Si vous avez des questions sur cette politique ou souhaitez exercer vos droits, veuillez nous contacter : nous serons ravis de vous aider."],
+        "items": []
+      }
+    ]
   }
 }

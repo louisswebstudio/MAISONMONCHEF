@@ -32,6 +32,7 @@
     "socials": "Socials",
     "other": "Other info:",
     "office": "Dubai, UAE",
+    "privacy": "Privacy Policy",
     "rights": "All rights reserved."
   },
   "languageSwitcher": {
@@ -393,5 +394,100 @@
     "whatsappMessage": "Hello Maison Monchef, I would like to book a viewing of {property}.",
     "relatedHeading": "You May Also Consider",
     "viewAll": "View all"
+  },
+  "privacy": {
+    "metaTitle": "Privacy Policy",
+    "metaDescription": "How Maison Monchef Real Estate collects, uses, protects and shares your personal information.",
+    "eyebrow": "Legal",
+    "heading": "Privacy Policy",
+    "updatedLabel": "Last updated",
+    "updated": "23 July 2026",
+    "intro": "Maison Monchef Real Estate L.L.C. (\"Maison Monchef\", \"we\", \"us\" or \"our\") is committed to protecting your privacy. This policy explains what personal information we collect when you interact with us or use this website, how we use it, and the rights you have over it. It is intended to reflect our obligations under the applicable data protection laws of the United Arab Emirates.",
+    "sections": [
+      {
+        "title": "Information we collect",
+        "body": ["We only collect the information we need to respond to your enquiry and provide our advisory services. This includes:"],
+        "items": [
+          "Contact details you provide through our enquiry form or by messaging us directly — such as your name, phone number and the content of your message.",
+          "Details of the property or service you are interested in, so we can advise you appropriately.",
+          "Limited technical information, such as your IP address, collected automatically to help secure our forms against automated abuse."
+        ]
+      },
+      {
+        "title": "How we use your information",
+        "body": ["We use the information you provide to:"],
+        "items": [
+          "Respond to your enquiries and arrange property viewings or consultations.",
+          "Provide, personalise and improve our real estate advisory services.",
+          "Keep a record of our correspondence and comply with our legal and regulatory obligations.",
+          "Protect our website and forms against fraud, spam and misuse."
+        ]
+      },
+      {
+        "title": "Legal basis and consent",
+        "body": ["We process your personal information on the basis of the consent you give us when you contact us, and where necessary to take steps at your request before entering into an agreement, to comply with our legal obligations, or in our legitimate interest in operating and securing our business. You may withdraw your consent at any time by contacting us using the details below."],
+        "items": []
+      },
+      {
+        "title": "How we share your information",
+        "body": ["We never sell your personal information. We share it only with trusted service providers who help us operate our business, and only to the extent necessary. These include:"],
+        "items": [
+          "Email and messaging providers that deliver your enquiry to our team.",
+          "Our secure content and records platform, where enquiries are stored.",
+          "Security providers that protect our forms from automated abuse.",
+          "Professional advisers, regulators or authorities where we are required to do so by law."
+        ]
+      },
+      {
+        "title": "Cookies and analytics",
+        "body": ["This website uses only the cookies and similar technologies necessary for it to function and to keep it secure. We do not use cookies to build advertising profiles about you. You can control or delete cookies through your browser settings."],
+        "items": []
+      },
+      {
+        "title": "Data retention",
+        "body": ["We keep your personal information only for as long as needed to respond to your enquiry, provide our services and meet our legal and regulatory obligations. When it is no longer required, we securely delete or anonymise it."],
+        "items": []
+      },
+      {
+        "title": "Data security",
+        "body": ["We apply appropriate technical and organisational measures to protect your personal information against loss, misuse and unauthorised access. While no method of transmission over the internet is completely secure, we work to safeguard your information at every stage."],
+        "items": []
+      },
+      {
+        "title": "International transfers",
+        "body": ["Some of our service providers may process your information outside the United Arab Emirates. Where this happens, we take steps to ensure your information continues to be protected to a standard consistent with this policy and applicable law."],
+        "items": []
+      },
+      {
+        "title": "Your rights",
+        "body": ["Subject to applicable law, you have the right to:"],
+        "items": [
+          "Request access to the personal information we hold about you.",
+          "Ask us to correct information that is inaccurate or incomplete.",
+          "Ask us to delete your information where there is no legal reason for us to keep it.",
+          "Withdraw your consent or object to how we use your information."
+        ]
+      },
+      {
+        "title": "Third-party links",
+        "body": ["Our website may link to third-party sites, such as our social media profiles or messaging services. We are not responsible for the privacy practices of those sites, and we encourage you to review their own privacy policies."],
+        "items": []
+      },
+      {
+        "title": "Children's privacy",
+        "body": ["Our services are intended for adults. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us so we can remove it."],
+        "items": []
+      },
+      {
+        "title": "Changes to this policy",
+        "body": ["We may update this policy from time to time to reflect changes in our practices or legal requirements. Any updates will be posted on this page with a revised \"Last updated\" date."],
+        "items": []
+      },
+      {
+        "title": "Contact us",
+        "body": ["If you have any questions about this policy or wish to exercise your rights, please contact us and we will be glad to help."],
+        "items": []
+      }
+    ]
   }
 }

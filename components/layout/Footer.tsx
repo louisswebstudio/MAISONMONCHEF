@@ -35,6 +35,7 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
     { href: `${base}/collection`, label: t.properties },
     { href: `${base}/blog`, label: dict.nav.blog },
     { href: `${base}/contact`, label: dict.nav.contact },
+    { href: `${base}/privacy`, label: t.privacy },
   ];
 
   return (
