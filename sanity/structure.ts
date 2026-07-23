@@ -25,4 +25,12 @@ export const structure: StructureResolver = (S) =>
       S.listItem().title("Amenities").child(S.documentTypeList("amenity").title("Amenities")),
       S.listItem().title("Developers").child(S.documentTypeList("developer").title("Developers")),
       S.listItem().title("Testimonials").child(S.documentTypeList("testimonial").title("Testimonials")),
+      S.divider(),
+      S.listItem()
+        .title("Contact Submissions")
+        .child(
+          S.documentTypeList("contactSubmission")
+            .title("Contact Submissions")
+            .defaultOrdering([{ field: "submittedAt", direction: "desc" }]),
+        ),
     ]);

@@ -298,7 +298,10 @@
       "errorName": "Veuillez saisir votre nom.",
       "errorPhone": "Veuillez saisir un numéro de téléphone.",
       "errorConsent": "Veuillez accepter la Politique de confidentialité et de protection des données pour continuer.",
-      "emailSubject": "Demande immobilière de {name}"
+      "errorVerification": "Échec de la vérification. Veuillez réessayer.",
+      "errorServer": "Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer, ou contactez-nous directement par téléphone ou WhatsApp.",
+      "submitting": "Envoi…",
+      "successMessage": "Merci — nous avons bien reçu votre demande et vous contacterons sous peu."
     },
     "photoAlt": "Une réception baignée de lumière avec une porte cintrée et vue sur le Burj Khalifa, l'adresse de Maison Monchef à Dubaï."
   },
@@ -331,10 +334,14 @@
     "locations": {
       "business-bay": "Business Bay",
       "palm-jumeirah": "Palm Jumeirah",
+      "palm-jebel-ali": "Palm Jebel Ali",
       "downtown-dubai": "Downtown Dubai",
       "dubai-marina": "Dubai Marina",
+      "dubai-hills": "Dubai Hills",
+      "dubai-south": "Dubai South",
       "arjan": "Arjan",
-      "dubai-hills": "Dubai Hills"
+      "majan": "Majan",
+      "al-yalayis": "Al Yalayis"
     }
   },
   "properties": {

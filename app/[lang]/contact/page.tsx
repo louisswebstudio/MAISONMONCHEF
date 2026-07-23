@@ -139,7 +139,7 @@ export default async function ContactPage({
 
           {/* Right — enquiry form */}
           <div className="w-full lg:flex-1">
-            <ContactForm t={t} />
+            <ContactForm t={t} lang={locale} />
           </div>
         </div>
 

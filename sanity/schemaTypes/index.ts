@@ -17,6 +17,7 @@ import { developer } from "./documents/developer";
 import { testimonial } from "./documents/testimonial";
 import { blogPost } from "./documents/blogPost";
 import { service } from "./documents/service";
+import { contactSubmission } from "./documents/contactSubmission";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -28,6 +29,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonial,
     blogPost,
     service,
+    contactSubmission,
     // Reusable field/section objects
     localeString,
     localeText,
