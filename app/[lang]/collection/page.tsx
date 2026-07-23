@@ -5,7 +5,9 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 import { client } from "@/sanity/lib/client";
 import {
   collectionListingsQuery,
+  areaFilterQuery,
   type CollectionListing,
+  type AreaRegionGroup,
 } from "@/sanity/lib/queries";
 import { CollectionExplorer } from "@/components/collection/CollectionExplorer";
 import { Container } from "@/components/layout/Container";
@@ -50,11 +52,17 @@ export default async function CollectionPage({
   const dict = await getDictionary(locale);
   const t = dict.collection;
 
-  const listings = await client.fetch<CollectionListing[]>(
-    collectionListingsQuery,
-    { lang: locale },
-    { next: { revalidate } },
-  );
+  // The location filter's options are CMS documents (regions + areas), so they
+  // are fetched alongside the listings and share the same 60s ISR window — an
+  // area added in the Studio shows up in the filter without a deploy.
+  const [listings, areaRegions] = await Promise.all([
+    client.fetch<CollectionListing[]>(
+      collectionListingsQuery,
+      { lang: locale },
+      { next: { revalidate } },
+    ),
+    client.fetch<AreaRegionGroup[]>(areaFilterQuery, {}, { next: { revalidate } }),
+  ]);
 
   return (
     <div className="w-full pb-[78px] pt-[48px]">
@@ -82,7 +90,12 @@ export default async function CollectionPage({
           </div>
         </header>
 
-        <CollectionExplorer lang={locale} dict={dict} listings={listings} />
+        <CollectionExplorer
+          lang={locale}
+          dict={dict}
+          listings={listings}
+          areaRegions={areaRegions}
+        />
       </Container>
     </div>
   );

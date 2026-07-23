@@ -23,6 +23,22 @@ export const structure: StructureResolver = (S) =>
       S.listItem().title("Blog").child(S.documentTypeList("blogPost").title("Blog posts")),
       S.divider(),
       S.listItem().title("Amenities").child(S.documentTypeList("amenity").title("Amenities")),
+      // Location taxonomy: Regions (3) > Areas (45). Areas default to the
+      // region/order ordering rather than alphabetical so the Studio list reads
+      // the same way the Collection filter does.
+      S.listItem().title("Regions").child(
+        S.documentTypeList("areaRegion")
+          .title("Regions")
+          .defaultOrdering([{ field: "order", direction: "asc" }]),
+      ),
+      S.listItem().title("Areas").child(
+        S.documentTypeList("area")
+          .title("Areas")
+          .defaultOrdering([
+            { field: "region.order", direction: "asc" },
+            { field: "order", direction: "asc" },
+          ]),
+      ),
       S.listItem().title("Developers").child(S.documentTypeList("developer").title("Developers")),
       S.listItem().title("Testimonials").child(S.documentTypeList("testimonial").title("Testimonials")),
       S.divider(),

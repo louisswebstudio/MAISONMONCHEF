@@ -77,23 +77,21 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
   const listing = await getListing(slug, lang);
   if (!listing) return {};
-  const dict = await getDictionary(lang);
-  const locationLabel = localeLocation(dict, listing.location);
   return {
     title: listing.name,
-    description:
-      listing.description ??
-      `${listing.name} — ${locationLabel}, ${dict.collection.dubai}.`,
+    description: listing.description ?? `${listing.name} — ${formatLocation(listing)}.`,
     alternates: { canonical: `/${lang}/collection/${slug}` },
   };
 }
 
-function localeLocation(
-  dict: Awaited<ReturnType<typeof getDictionary>>,
-  location: string,
-) {
-  const map = dict.collection.locations as Record<string, string>;
-  return map[location] ?? location;
+/**
+ * "Area, Region" — e.g. "Palm Jumeirah, Dubai". Both come from the `area`
+ * taxonomy in Sanity; they're proper nouns, so there is no per-locale lookup,
+ * and the region is read from the document rather than hardcoded to Dubai (the
+ * taxonomy also covers Abu Dhabi and the Northern Emirates).
+ */
+function formatLocation(listing: ListingDetail) {
+  return listing.region ? `${listing.location}, ${listing.region}` : listing.location;
 }
 
 export default async function PropertyPage({
@@ -109,8 +107,7 @@ export default async function PropertyPage({
   if (!listing) notFound();
 
   const t = dict.propertyDetail;
-  const locationLabel = localeLocation(dict, listing.location);
-  const fullLocation = `${locationLabel}, ${dict.collection.dubai}`;
+  const fullLocation = formatLocation(listing);
   const startingPriceDisplay = `AED ${listing.startingPrice.toLocaleString("en-US")}`;
   const dash = t.notProvided;
   const unitTypes = listing.unitTypes ?? [];

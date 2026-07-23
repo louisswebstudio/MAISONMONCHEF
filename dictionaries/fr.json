@@ -312,7 +312,6 @@
     "intro": "Une sélection choisie de résidences à travers Dubaï. Vente, sur plan et au-delà. Filtrez selon ce qui compte pour vous.",
     "loadMore": "Voir plus",
     "empty": "Aucun bien ne correspond à vos filtres pour l'instant. Ajustez-les, ou contactez-nous pour des opportunités hors marché.",
-    "dubai": "Dubaï",
     "filters": {
       "status": "Statut",
       "statusAll": "Tous",
@@ -330,18 +329,6 @@
       "penthouse": "Penthouse",
       "villa": "Villa",
       "townhouse": "Maison de ville"
-    },
-    "locations": {
-      "business-bay": "Business Bay",
-      "palm-jumeirah": "Palm Jumeirah",
-      "palm-jebel-ali": "Palm Jebel Ali",
-      "downtown-dubai": "Downtown Dubai",
-      "dubai-marina": "Dubai Marina",
-      "dubai-hills": "Dubai Hills",
-      "dubai-south": "Dubai South",
-      "arjan": "Arjan",
-      "majan": "Majan",
-      "al-yalayis": "Al Yalayis"
     }
   },
   "properties": {

@@ -13,6 +13,8 @@ import {
 import { page } from "./documents/page";
 import { listing } from "./documents/listing";
 import { amenity } from "./documents/amenity";
+import { areaRegion } from "./documents/areaRegion";
+import { area } from "./documents/area";
 import { developer } from "./documents/developer";
 import { testimonial } from "./documents/testimonial";
 import { blogPost } from "./documents/blogPost";
@@ -25,6 +27,8 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     page,
     listing,
     amenity,
+    areaRegion,
+    area,
     developer,
     testimonial,
     blogPost,

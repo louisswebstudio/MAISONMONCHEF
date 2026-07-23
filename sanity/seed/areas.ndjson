@@ -1,0 +1,48 @@
+{"_id":"region-dubai","_type":"areaRegion","name":"Dubai","slug":{"_type":"slug","current":"dubai"},"order":1}
+{"_id":"area-downtown-dubai","_type":"area","name":"Downtown Dubai","slug":{"_type":"slug","current":"downtown-dubai"},"region":{"_type":"reference","_ref":"region-dubai"},"order":1}
+{"_id":"area-business-bay","_type":"area","name":"Business Bay","slug":{"_type":"slug","current":"business-bay"},"region":{"_type":"reference","_ref":"region-dubai"},"order":2}
+{"_id":"area-dubai-marina","_type":"area","name":"Dubai Marina","slug":{"_type":"slug","current":"dubai-marina"},"region":{"_type":"reference","_ref":"region-dubai"},"order":3}
+{"_id":"area-palm-jumeirah","_type":"area","name":"Palm Jumeirah","slug":{"_type":"slug","current":"palm-jumeirah"},"region":{"_type":"reference","_ref":"region-dubai"},"order":4}
+{"_id":"area-dubai-harbour","_type":"area","name":"Dubai Harbour","slug":{"_type":"slug","current":"dubai-harbour"},"region":{"_type":"reference","_ref":"region-dubai"},"order":5}
+{"_id":"area-dubai-creek-harbour","_type":"area","name":"Dubai Creek Harbour","slug":{"_type":"slug","current":"dubai-creek-harbour"},"region":{"_type":"reference","_ref":"region-dubai"},"order":6}
+{"_id":"area-city-walk","_type":"area","name":"City Walk","slug":{"_type":"slug","current":"city-walk"},"region":{"_type":"reference","_ref":"region-dubai"},"order":7}
+{"_id":"area-bluewaters-island","_type":"area","name":"Bluewaters Island","slug":{"_type":"slug","current":"bluewaters-island"},"region":{"_type":"reference","_ref":"region-dubai"},"order":8}
+{"_id":"area-dubai-water-canal","_type":"area","name":"Dubai Water Canal","slug":{"_type":"slug","current":"dubai-water-canal"},"region":{"_type":"reference","_ref":"region-dubai"},"order":9}
+{"_id":"area-jumeirah-bay-island","_type":"area","name":"Jumeirah Bay Island","slug":{"_type":"slug","current":"jumeirah-bay-island"},"region":{"_type":"reference","_ref":"region-dubai"},"order":10}
+{"_id":"area-dubai-maritime-city","_type":"area","name":"Dubai Maritime City","slug":{"_type":"slug","current":"dubai-maritime-city"},"region":{"_type":"reference","_ref":"region-dubai"},"order":11}
+{"_id":"area-mbr-city","_type":"area","name":"MBR City","slug":{"_type":"slug","current":"mbr-city"},"region":{"_type":"reference","_ref":"region-dubai"},"order":12}
+{"_id":"area-sobha-hartland","_type":"area","name":"Sobha Hartland","slug":{"_type":"slug","current":"sobha-hartland"},"region":{"_type":"reference","_ref":"region-dubai"},"order":13}
+{"_id":"area-dubai-hills-estate","_type":"area","name":"Dubai Hills Estate","slug":{"_type":"slug","current":"dubai-hills-estate"},"region":{"_type":"reference","_ref":"region-dubai"},"order":14}
+{"_id":"area-meydan","_type":"area","name":"Meydan","slug":{"_type":"slug","current":"meydan"},"region":{"_type":"reference","_ref":"region-dubai"},"order":15}
+{"_id":"area-arabian-ranches","_type":"area","name":"Arabian Ranches","slug":{"_type":"slug","current":"arabian-ranches"},"region":{"_type":"reference","_ref":"region-dubai"},"order":16}
+{"_id":"area-the-valley","_type":"area","name":"The Valley","slug":{"_type":"slug","current":"the-valley"},"region":{"_type":"reference","_ref":"region-dubai"},"order":17}
+{"_id":"area-emaar-south","_type":"area","name":"Emaar South","slug":{"_type":"slug","current":"emaar-south"},"region":{"_type":"reference","_ref":"region-dubai"},"order":18}
+{"_id":"area-dubai-south","_type":"area","name":"Dubai South","slug":{"_type":"slug","current":"dubai-south"},"region":{"_type":"reference","_ref":"region-dubai"},"order":19}
+{"_id":"area-expo-city-dubai","_type":"area","name":"Expo City Dubai","slug":{"_type":"slug","current":"expo-city-dubai"},"region":{"_type":"reference","_ref":"region-dubai"},"order":20}
+{"_id":"area-damac-hills","_type":"area","name":"DAMAC Hills","slug":{"_type":"slug","current":"damac-hills"},"region":{"_type":"reference","_ref":"region-dubai"},"order":21}
+{"_id":"area-damac-hills-2","_type":"area","name":"DAMAC Hills 2","slug":{"_type":"slug","current":"damac-hills-2"},"region":{"_type":"reference","_ref":"region-dubai"},"order":22}
+{"_id":"area-jvc","_type":"area","name":"JVC","slug":{"_type":"slug","current":"jvc"},"region":{"_type":"reference","_ref":"region-dubai"},"order":23}
+{"_id":"area-jvt","_type":"area","name":"JVT","slug":{"_type":"slug","current":"jvt"},"region":{"_type":"reference","_ref":"region-dubai"},"order":24}
+{"_id":"area-arjan","_type":"area","name":"Arjan","slug":{"_type":"slug","current":"arjan"},"region":{"_type":"reference","_ref":"region-dubai"},"order":25}
+{"_id":"area-motor-city","_type":"area","name":"Motor City","slug":{"_type":"slug","current":"motor-city"},"region":{"_type":"reference","_ref":"region-dubai"},"order":26}
+{"_id":"area-dubai-sports-city","_type":"area","name":"Dubai Sports City","slug":{"_type":"slug","current":"dubai-sports-city"},"region":{"_type":"reference","_ref":"region-dubai"},"order":27}
+{"_id":"area-al-furjan","_type":"area","name":"Al Furjan","slug":{"_type":"slug","current":"al-furjan"},"region":{"_type":"reference","_ref":"region-dubai"},"order":28}
+{"_id":"area-dubai-islands","_type":"area","name":"Dubai Islands","slug":{"_type":"slug","current":"dubai-islands"},"region":{"_type":"reference","_ref":"region-dubai"},"order":29}
+{"_id":"area-palm-jebel-ali","_type":"area","name":"Palm Jebel Ali","slug":{"_type":"slug","current":"palm-jebel-ali"},"region":{"_type":"reference","_ref":"region-dubai"},"order":30}
+{"_id":"region-abu-dhabi","_type":"areaRegion","name":"Abu Dhabi","slug":{"_type":"slug","current":"abu-dhabi"},"order":2}
+{"_id":"area-saadiyat-island","_type":"area","name":"Saadiyat Island","slug":{"_type":"slug","current":"saadiyat-island"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":1}
+{"_id":"area-yas-island","_type":"area","name":"Yas Island","slug":{"_type":"slug","current":"yas-island"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":2}
+{"_id":"area-al-reem-island","_type":"area","name":"Al Reem Island","slug":{"_type":"slug","current":"al-reem-island"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":3}
+{"_id":"area-al-raha-beach","_type":"area","name":"Al Raha Beach","slug":{"_type":"slug","current":"al-raha-beach"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":4}
+{"_id":"area-hudayriyat-island","_type":"area","name":"Hudayriyat Island","slug":{"_type":"slug","current":"hudayriyat-island"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":5}
+{"_id":"area-al-maryah-island","_type":"area","name":"Al Maryah Island","slug":{"_type":"slug","current":"al-maryah-island"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":6}
+{"_id":"area-masdar-city","_type":"area","name":"Masdar City","slug":{"_type":"slug","current":"masdar-city"},"region":{"_type":"reference","_ref":"region-abu-dhabi"},"order":7}
+{"_id":"region-northern-emirates","_type":"areaRegion","name":"Northern Emirates","slug":{"_type":"slug","current":"northern-emirates"},"order":3}
+{"_id":"area-al-marjan-island","_type":"area","name":"Al Marjan Island","slug":{"_type":"slug","current":"al-marjan-island"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":1}
+{"_id":"area-mina-al-arab","_type":"area","name":"Mina Al Arab","slug":{"_type":"slug","current":"mina-al-arab"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":2}
+{"_id":"area-al-hamra-village","_type":"area","name":"Al Hamra Village","slug":{"_type":"slug","current":"al-hamra-village"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":3}
+{"_id":"area-hayat-island","_type":"area","name":"Hayat Island","slug":{"_type":"slug","current":"hayat-island"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":4}
+{"_id":"area-rak-central","_type":"area","name":"RAK Central","slug":{"_type":"slug","current":"rak-central"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":5}
+{"_id":"area-siniya-island","_type":"area","name":"Siniya Island","slug":{"_type":"slug","current":"siniya-island"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":6}
+{"_id":"area-downtown-umm-al-quwain","_type":"area","name":"Downtown Umm Al Quwain","slug":{"_type":"slug","current":"downtown-umm-al-quwain"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":7}
+{"_id":"area-al-salam-city","_type":"area","name":"Al Salam City","slug":{"_type":"slug","current":"al-salam-city"},"region":{"_type":"reference","_ref":"region-northern-emirates"},"order":8}

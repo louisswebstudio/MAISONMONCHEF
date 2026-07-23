@@ -6,6 +6,7 @@ credentials, so this must be run by someone with write access):
 
 ```bash
 # from the project root, once `sanity` CLI is authenticated:
+npx sanity dataset import sanity/seed/areas.ndjson production --replace
 npx sanity dataset import sanity/seed/amenities.ndjson production
 npx sanity dataset import sanity/seed/showcase-listing.ndjson production
 npx sanity dataset import sanity/seed/test-listings.ndjson production
@@ -13,6 +14,44 @@ npx sanity dataset import sanity/seed/blog-posts.ndjson production
 # greencrest-listings.ndjson is SUPERSEDED by greencrest-project.ndjson — see below.
 npx sanity dataset import sanity/seed/greencrest-project.ndjson production
 ```
+
+## `areas.ndjson` (generated) + `generate-areas.mjs`
+
+The location taxonomy: 3 `areaRegion` documents (Dubai, Abu Dhabi, Northern
+Emirates) and the 45 `area` documents under them, in the client-supplied order
+(`order` field — deliberately NOT alphabetical). `listing.location` is a
+reference into this set; the Collection filter renders one collapsible section
+per region.
+
+`areas.ndjson` is GENERATED — edit the list in `generate-areas.mjs` and re-run
+it, don't hand-edit the NDJSON:
+
+```bash
+node sanity/seed/generate-areas.mjs
+npx sanity dataset import sanity/seed/areas.ndjson production --replace
+```
+
+`_id`s are deterministic (`region-<slug>` / `area-<slug>`), so `--replace`
+upserts rather than duplicating. **Once imported, Sanity is the source of
+truth** — an editor adding an area in the Studio appears in the Collection
+filter within the page's 60s ISR window, with no deploy and no code change.
+Treat `generate-areas.mjs` as the creation record, not a live mirror.
+
+## `migrate-listing-locations.mjs` (one-off, already run)
+
+Converted `listing.location` from the old 10-value string enum
+(`LISTING_LOCATIONS`, since deleted from `lib/listings.ts`) to `area`
+references. Idempotent and safe to re-run — it skips documents that already
+hold a reference, and patches drafts as well as published docs:
+
+```bash
+npx sanity exec sanity/seed/migrate-listing-locations.mjs --with-user-token
+```
+
+Run it again if a draft that predates the migration is ever published with a
+legacy string. Two legacy values (`majan`, `al-yalayis`) have no counterpart in
+the 45-area taxonomy; nothing used them, and the script reports rather than
+guesses if anything ever does.
 
 ## `amenities.ndjson`
 

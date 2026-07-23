@@ -19,9 +19,13 @@ export function collectionListingToCardData(
   lang: Locale,
   dict: Dictionary,
 ): PropertyCardData {
-  const tc = dict.collection;
-  const locationLabel =
-    tc.locations[listing.location as keyof typeof tc.locations] ?? listing.location;
+  // Area and region names come straight from the `area` taxonomy in Sanity —
+  // they're proper nouns, not translated strings, so there is no dictionary
+  // lookup any more. The region supplies the suffix that used to be a hardcoded
+  // "Dubai", which is now wrong for Abu Dhabi / Northern Emirates listings.
+  const locationLabel = listing.region
+    ? `${listing.location}, ${listing.region}`
+    : listing.location;
 
   // Project card: a starting price plus bedroom / size RANGES across unit types.
   // Bathrooms are intentionally omitted here — they vary per unit and are shown
@@ -31,7 +35,7 @@ export function collectionListingToCardData(
     image: listing.image
       ? urlForImage(listing.image).width(800).url()
       : PLACEHOLDER_IMAGE,
-    location: `${locationLabel}, ${tc.dubai}`,
+    location: locationLabel,
     price: formatPriceAmount(listing.startingPrice),
     pricePrefix: dict.listings.priceFrom,
     title: listing.name,

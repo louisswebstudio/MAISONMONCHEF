@@ -26,18 +26,18 @@ export const LISTING_CATEGORIES = [
 ] as const;
 
 /**
- * Real Dubai areas in active use (CLAUDE.md §6). NEVER add US placeholder
- * locations (Illinois, Texas, Miami, etc.) — those are template leftovers that
- * have been removed repeatedly.
+ * LOCATION IS NOT LISTED HERE. Unlike status/category/price, the location
+ * taxonomy lives in Sanity as `areaRegion` (3) + `area` (45) documents, because
+ * it is large and the client will keep extending it — an editor adding an area
+ * in the Studio must show up in the Collection filter without a code change.
+ * The filter fetches it via `areaFilterQuery` (sanity/lib/queries.ts); the seed
+ * that created it is sanity/seed/generate-areas.mjs.
+ *
+ * The old 10-value `LISTING_LOCATIONS` enum is gone; documents were migrated to
+ * references by sanity/seed/migrate-listing-locations.mjs. Real UAE areas only
+ * (CLAUDE.md §6) — NEVER add US placeholder locations (Illinois, Texas, Miami,
+ * etc.), those are template leftovers that have been removed repeatedly.
  */
-export const LISTING_LOCATIONS = [
-  { value: "business-bay", label: "Business Bay" },
-  { value: "palm-jumeirah", label: "Palm Jumeirah" },
-  { value: "downtown-dubai", label: "Downtown Dubai" },
-  { value: "dubai-marina", label: "Dubai Marina" },
-  { value: "arjan", label: "Arjan" },
-  { value: "dubai-hills", label: "Dubai Hills" },
-] as const;
 
 /**
  * Price bands for the Collection filter (AED) — from the Figma filter panel
@@ -52,5 +52,4 @@ export const LISTING_PRICE_RANGES = [
 
 export type ListingStatus = (typeof LISTING_STATUSES)[number]["value"];
 export type ListingCategory = (typeof LISTING_CATEGORIES)[number]["value"];
-export type ListingLocation = (typeof LISTING_LOCATIONS)[number]["value"];
 export type ListingPriceRange = (typeof LISTING_PRICE_RANGES)[number]["value"];
