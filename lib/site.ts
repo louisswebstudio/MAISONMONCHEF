@@ -24,8 +24,8 @@ export const site = {
 
 /** Instagram + LinkedIn only. Facebook/YouTube intentionally reserved, not shown. */
 export const socials = [
-  { name: "Instagram", href: "https://instagram.com/" },
-  { name: "LinkedIn", href: "https://linkedin.com/" },
+  { name: "Instagram", href: "https://www.instagram.com/maisonmonchef?igsh=aTlqeG0ydXg0eTc1" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/maison-monchef/about/?viewAsMember=true" },
 ] as const;
 
 /** Build a wa.me deep link with an optional pre-filled message. */
