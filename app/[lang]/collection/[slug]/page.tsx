@@ -135,7 +135,8 @@ export default async function PropertyPage({
       label: t.info.completionYear,
       value: listing.completionYear != null ? String(listing.completionYear) : dash,
     },
-    { label: t.info.floors, value: listing.floors != null ? String(listing.floors) : dash },
+    // Temporarily hidden — restore this row to bring "Floors" back to Property Info.
+    // { label: t.info.floors, value: listing.floors != null ? String(listing.floors) : dash },
   ];
 
   const amenities = listing.amenities ?? [];
