@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
   // a project element, and never renders in production — disabled so it stops
   // appearing over the design while reviewing.
   devIndicators: false,
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
   images: {
     remotePatterns: [
       // Sanity-hosted listing/blog media (project 1tsx0da7).
