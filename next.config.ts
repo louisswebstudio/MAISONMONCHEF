@@ -7,9 +7,11 @@ const nextConfig: NextConfig = {
   // appearing over the design while reviewing.
   devIndicators: false,
   images: {
-    // Sanity-hosted listing/blog media (project 1tsx0da7).
     remotePatterns: [
+      // Sanity-hosted listing/blog media (project 1tsx0da7).
       { protocol: "https", hostname: "cdn.sanity.io", pathname: "/images/**" },
+      // Testimonial placeholder headshots (components/sections/Testimonials.tsx).
+      { protocol: "https", hostname: "images.unsplash.com" },
     ],
   },
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
@@ -40,6 +41,7 @@ type Testimonial = {
   name: string;
   role: string;
   quote: string;
+  photo: string;
 };
 
 /** Repetitions of the 3-item set per half — see the half-width note above. */
@@ -206,9 +208,14 @@ function TestimonialCard({ item, rtl }: { item: Testimonial; rtl: boolean }) {
       </div>
 
       <div className="flex items-center gap-[16px]">
-        <span className="flex size-[50px] shrink-0 items-center justify-center bg-charcoal text-[16px] font-semibold text-white">
-          {item.initials}
-        </span>
+        <Image
+          src={item.photo}
+          alt=""
+          aria-hidden
+          width={50}
+          height={50}
+          className="size-[50px] shrink-0 rounded-full object-cover"
+        />
         <span className="flex min-w-0 flex-col">
           <span className="text-[18px] font-medium leading-[25.2px] text-navy">
             {item.name}
