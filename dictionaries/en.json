@@ -388,7 +388,7 @@
     },
     "sidebar": {
       "heading": "Request a Viewing",
-      "supporting": "No forms, no queues, just a conversation. Arrange a private viewing directly with our team.",
+      "supporting": "No forms, no queues, just a conversation. Get in touch directly with our team.",
       "cta": "Inquire Now"
     },
     "whatsappMessage": "Hello Maison Monchef, I would like to book a viewing of {property}.",
@@ -408,7 +408,7 @@
         "title": "Information we collect",
         "body": ["We only collect the information we need to respond to your enquiry and provide our advisory services. This includes:"],
         "items": [
-          "Contact details you provide through our enquiry form or by messaging us directly — such as your name, phone number and the content of your message.",
+          "Contact details you provide through our enquiry form or by messaging us directly, such as your name, phone number and the content of your message.",
           "Details of the property or service you are interested in, so we can advise you appropriately.",
           "Limited technical information, such as your IP address, collected automatically to help secure our forms against automated abuse."
         ]
