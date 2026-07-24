@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Standalone output lets Passenger run this as a lightweight Node process
+  // instead of needing the full Next.js toolchain on the server.
+  output: "standalone",
   // Hide the Next.js dev-mode indicator (the black circular "N" badge fixed to
   // the bottom-left in development). It is Next's built-in devtools button, not
   // a project element, and never renders in production — disabled so it stops
