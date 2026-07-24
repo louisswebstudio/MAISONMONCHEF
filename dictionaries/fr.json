@@ -365,7 +365,8 @@
       "baths": "SdB",
       "size": "Surface",
       "price": "Prix",
-      "units": "Unités"
+      "units": "Unités",
+      "priceOnRequest": "Prix sur demande"
     },
     "gallery": {
       "prev": "Image précédente",

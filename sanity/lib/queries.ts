@@ -338,10 +338,13 @@ export type ListingAmenity = {
 /** One unit configuration within a project listing (localized label). */
 export type UnitType = {
   label: string;
-  price: number;
+  /** Optional: some configurations are released before pricing is published,
+   *  in which case the UI shows "Price on request". */
+  price?: number;
   bedrooms?: number;
   bathrooms?: number;
-  minSizeSqft: number;
+  /** Optional: size may be unpublished for a not-yet-priced configuration. */
+  minSizeSqft?: number;
   maxSizeSqft?: number;
   unitsAvailable?: number;
 };

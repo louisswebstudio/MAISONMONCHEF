@@ -273,7 +273,9 @@ export default async function PropertyPage({
                               {size ? `${size} ${t.sqft}` : dash}
                             </td>
                             <td className="whitespace-nowrap px-[16px] py-[14px] font-semibold">
-                              AED {u.price.toLocaleString("en-US")}
+                              {u.price != null
+                                ? `AED ${u.price.toLocaleString("en-US")}`
+                                : t.unit.priceOnRequest}
                             </td>
                             <td className="py-[14px] ps-[16px]">
                               {u.unitsAvailable != null ? String(u.unitsAvailable) : dash}

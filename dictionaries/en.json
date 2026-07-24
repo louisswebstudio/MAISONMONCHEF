@@ -365,7 +365,8 @@
       "baths": "Baths",
       "size": "Size",
       "price": "Price",
-      "units": "Units"
+      "units": "Units",
+      "priceOnRequest": "Price on request"
     },
     "gallery": {
       "prev": "Previous image",
