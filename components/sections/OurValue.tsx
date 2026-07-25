@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ComponentType, SVGProps } from "react";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { Container } from "@/components/layout/Container";
@@ -88,17 +87,17 @@ export function OurValue({ dict }: { dict: Dictionary }) {
               Lifted above the cards below lg, where the row is a single stack. */}
           <div className="h-[380px] w-full max-lg:order-first sm:h-[520px] lg:h-[521px] lg:w-[406px] lg:shrink-0">
             <Reveal delay={140} className="relative h-full w-full overflow-hidden">
-              <Image
-                src="/brand/about/our-value-ceo.png"
-                alt={t.photoAlt}
-                fill
-                sizes="(min-width: 1024px) 406px, (min-width: 768px) calc(100vw - 200px), calc(100vw - 48px)"
-                /* The subject's head sits in the top ~quarter of the frame, so a
-                   centred cover-crop drops his face on the shorter mobile/tablet
-                   containers. Anchor the crop to the top to keep the head in
-                   view; at lg the container aspect ≈ the source, so this is
-                   imperceptible there. */
-                className="object-cover object-top"
+              <video
+                src="/brand/about/our-value-ceo.mp4"
+                aria-label={t.photoAlt}
+                autoPlay
+                loop
+                muted
+                playsInline
+                poster="/brand/about/our-value-ceo.png"
+                /* Same top-anchored cover crop as the photo it replaces, since
+                   the subject sits in the top portion of the frame here too. */
+                className="absolute inset-0 h-full w-full object-cover object-top"
               />
             </Reveal>
           </div>
