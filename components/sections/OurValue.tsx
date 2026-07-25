@@ -95,9 +95,7 @@ export function OurValue({ dict }: { dict: Dictionary }) {
                 muted
                 playsInline
                 poster="/brand/about/our-value-ceo.png"
-                /* Same top-anchored cover crop as the photo it replaces, since
-                   the subject sits in the top portion of the frame here too. */
-                className="absolute inset-0 h-full w-full object-cover object-top"
+                className="absolute inset-0 h-full w-full object-cover object-[50%_30%]"
               />
             </Reveal>
           </div>
