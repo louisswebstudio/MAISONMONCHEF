@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
@@ -86,13 +85,18 @@ export function Process({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
           {/* Skyline photo band */}
           <Reveal className="relative h-[240px] w-full overflow-hidden bg-[#939292] sm:h-[384px]">
-            <Image
-              src="/brand/reception-centered.webp"
-              alt={t.imageAlt}
-              fill
-              sizes="(min-width: 1240px) 1190px, 100vw"
-              className="object-cover"
-            />
+            <video
+              aria-label={t.imageAlt}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              poster="/brand/reception-centered.webp"
+              className="absolute inset-0 h-full w-full object-cover object-[50%_50%]"
+            >
+              <source src="/brand/wall-logo.mp4" type="video/mp4" />
+            </video>
           </Reveal>
         </div>
       </Container>
