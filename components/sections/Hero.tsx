@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import { Button } from "@/components/ui/Button";
@@ -32,6 +35,19 @@ import { Container } from "@/components/layout/Container";
  */
 export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const base = `/${lang}`;
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Mobile browsers (iOS Safari in particular) can ignore the `muted` JSX
+  // attribute at autoplay-eligibility time — React reflects it as an HTML
+  // attribute, but the browser's autoplay gate checks the live IDL property.
+  // Setting it imperatively (and re-triggering play()) is the reliable fix,
+  // otherwise the video pauses on a poster frame with a tap-to-play affordance.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
 
   return (
     <section className="relative flex min-h-[600px] w-full flex-col overflow-hidden pt-[32px] pb-[52px] lg:h-[631px] lg:min-h-0 lg:pt-[25px] lg:pb-0">
@@ -39,11 +55,13 @@ export function Hero({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           skyline still, so the first paint (and any device that blocks autoplay
           or prefers reduced motion) shows the same framed image behind the text. */}
       <video
+        ref={videoRef}
         aria-hidden
         autoPlay
         muted
         loop
         playsInline
+        webkit-playsinline="true"
         preload="auto"
         poster="/brand/hero-skyline.jpg"
         className="absolute inset-0 h-full w-full object-cover"
