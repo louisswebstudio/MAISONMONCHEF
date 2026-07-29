@@ -25,6 +25,10 @@ import { cn } from "@/lib/utils";
  * full-international phone). `#5f5f5f` (body grey), `#e5e5e5` / `#f0f0f0`
  * (copyright bar) are exact Figma values with no design token.
  */
+
+/** Agency credit link (not a `lib/site.ts` client-brand constant — this is us, not them). */
+const CREDIT_URL = "https://louisswebstudio.com";
+
 export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   const base = `/${lang}`;
   const t = dict.footer;
@@ -224,6 +228,17 @@ export function Footer({ lang, dict }: { lang: Locale; dict: Dictionary }) {
               </p>
             </div>
           </div>
+
+          {/* Site credit — deliberately subtle (small/muted) so it never
+              competes with the copyright bar above it. */}
+          <a
+            href={CREDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="self-center text-[12px] font-medium tracking-[-0.24px] text-[#a1a1a1] transition-colors duration-150 hover:text-[#5f5f5f]"
+          >
+            {t.siteCredit}
+          </a>
         </Container>
       </div>
     </footer>
