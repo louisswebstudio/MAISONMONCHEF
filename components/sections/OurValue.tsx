@@ -94,6 +94,7 @@ export function OurValue({ dict }: { dict: Dictionary }) {
                 loop
                 muted
                 playsInline
+                preload="auto"
                 poster="/brand/about/our-value-ceo.png"
                 className="absolute inset-0 h-full w-full object-cover object-[50%_30%]"
               />
