@@ -85,18 +85,11 @@ export function Process({ lang, dict }: { lang: Locale; dict: Dictionary }) {
 
           {/* Skyline photo band */}
           <Reveal className="relative h-[240px] w-full overflow-hidden bg-[#939292] sm:h-[384px]">
-            <video
-              aria-label={t.imageAlt}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster="/brand/reception-centered.webp"
+            <img
+              src="/brand/reception-centered.webp"
+              alt={t.imageAlt}
               className="absolute inset-0 h-full w-full object-cover object-[50%_50%]"
-            >
-              <source src="/brand/wall-logo.mp4" type="video/mp4" />
-            </video>
+            />
           </Reveal>
         </div>
       </Container>
